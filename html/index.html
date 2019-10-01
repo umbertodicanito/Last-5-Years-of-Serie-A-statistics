@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <title>A-stats</title>
+
+
+    <head>
+        <!-- LIBRARIES -->
+        <!-- D3.js lib -->
+        <script src="../lib/d3/d3.min.js" type="text/javascript"></script>
+        <script src="../lib/d3/d3.js" type="text/javascript"></script>
+
+        <!-- Jquery lib -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+
+        <!-- EXTERNAL CSS & JAVASCRIPTS -->
+        <!-- CSSes external-->
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+
+        <!-- FONT -->
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+
+        <!-- SLIDER FOR SEASONS -->
+        <!--Plugin CSS file with desired skin-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css"/>
+        <!--Plugin JavaScript file-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
+
+
+
+
+
+
+    </head>
+
+    <body>
+
+        <div id="div_menu">
+
+            <img id="logo" src="../media/logo.png">
+
+            <div id="div_team_A">
+                <select id="sel_teamA" class="chosen">
+                    <option value="" disabled selected>Select team A..</option>
+                    <option>Atalanta</option>
+                    <option>Bologna</option>
+                    <option>Genoa</option>
+                    <option>Inter</option>
+                    <option>Juve</option>
+                    <option>Milan</option>
+                    <option>Lecce</option>
+                    <option>Brescia</option>
+                    <option>Napoli</option>
+                    <option>Sampdoria</option>
+                    <option>Sassuolo</option>
+                    <option>Spal</option>
+                    <option>Fiorentina</option>
+                    <option>Udinese</option>
+                    <option>Verona</option>
+                </select>
+            </div>
+
+            <div id="div_team_B">
+                <select id="sel_teamB" class="chosen">
+                    <option value="" disabled selected>Select team B..</option>
+                    <option>Atalanta</option>
+                    <option>Bologna</option>
+                    <option>Genoa</option>
+                    <option>Inter</option>
+                    <option>Juve</option>
+                    <option>Milan</option>
+                    <option>Lecce</option>
+                    <option>Brescia</option>
+                    <option>Napoli</option>
+                    <option>Sampdoria</option>
+                    <option>Sassuolo</option>
+                    <option>Spal</option>
+                    <option>Fiorentina</option>
+                    <option>Udinese</option>
+                    <option>Verona</option>
+                </select>
+            </div>
+
+
+            <input type="text" class="js-range-slider" name="my_range" value="" />
+
+            <div id="div_credits">
+                Umberto di Canito, Daniele Buonadonna
+            </div>
+
+
+
+
+            <!-- JS external that modifies the content of page-->
+            <script type="text/javascript" src="../js/team_sel_A.js"></script>
+            <script type="text/javascript" src="../js/team_sel_B.js"></script>
+            <script type="text/javascript" src="../js/slider_years.js"></script>
+
+
+
+
+        </div>
+
+    </body>
+
+
+
+</html>
