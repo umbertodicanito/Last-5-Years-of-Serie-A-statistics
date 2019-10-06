@@ -57,6 +57,7 @@ function remove(){
         }
 
         $("#"+idSelectToAdjust + " option[value = " + value + "]").remove()
+        $('#'+idSelectToAdjust).trigger('chosen:updated')
     }
 
 }
@@ -68,7 +69,7 @@ function populateGenericSelect(teamTag){
     optionNotSelectable.value = ""
     optionNotSelectable.optSelected = true
     //optionNotSelectable.disabled = true
-    optionNotSelectable.innerHTML = "Choose Team " + teamTag + "..."
+    optionNotSelectable.innerHTML = "Choose team " + teamTag + "..."
     select.appendChild(optionNotSelectable)
     for(var i = 0; i<teamNames.length; i++){
         var option = document.createElement('option')
@@ -91,6 +92,7 @@ function populateGenericSelect(teamTag){
     select.style.width = "180px"
     //appending
     $('#div_team_' + teamTag).append(select)
+    $('#sel_team' + teamTag).chosen({no_results_text: "Team not presented in the dataset.",})
 }
 
 //populate "teamNames" variable
