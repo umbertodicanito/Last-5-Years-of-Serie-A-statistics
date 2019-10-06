@@ -8,5 +8,10 @@ $(".js-range-slider").ionRangeSlider({
     from: season_from,
     to: season_to,
     step: 1,
-    values: values_seasons
+    values: values_seasons,
+    onFinish: function(data){
+        var element = document.getElementById("notificationRangeSelected")
+        var text = "Range from " + values_seasons[data.from] + " to " + values_seasons[data.to]
+        element.textContent = text
+    }
 });
