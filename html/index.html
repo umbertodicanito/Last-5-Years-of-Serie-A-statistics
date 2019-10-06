@@ -33,8 +33,38 @@
         <!--DATASET CREATION-->
         <script src="../js/dataset_creator.js"></script>
 
+        <!-- FAVICONIT (icon website) -->
+        <!-- ****** favicon faviconit.com ****** -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="icon" sizes="16x16 32x32 64x64" href="../media/faviconit/favicon.ico">
+        <link rel="icon" type="image/png" sizes="196x196" href="../media/faviconit/favicon-192.png">
+        <link rel="icon" type="image/png" sizes="160x160" href="../media/faviconit/favicon-160.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../media/faviconit/favicon-96.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="../media/faviconit/favicon-64.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../media/faviconit/favicon-32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../media/faviconit/favicon-16.png">
+        <link rel="apple-touch-icon" href="../media/faviconit/favicon-57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="../media/faviconit/favicon-114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="../media/faviconit/favicon-72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="../media/faviconit/favicon-144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="../media/faviconit/favicon-60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="../media/faviconit/favicon-120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="../media/faviconit/favicon-76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="../media/faviconit/favicon-152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../media/faviconit/favicon-180.png">
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="../media/faviconit/favicon-144.png">
+        <meta name="msapplication-config" content="../media/faviconit/browserconfig.xml">
+        <!-- ****** favicon faviconit.com ****** -->
 
-
+        <!-- LOADING WINDOW-->
+        <div class="loader_bg">
+            <img id="logo_loading" src="../media/logo.png">
+            <div class="loader"></div>
+            <h1 id="course">Visual Analytics</h1>
+            <h2 id="names">Umberto di Canito, Daniele Buonadonna</h2>
+            <h3 id="year">2019/20</h3>
+        </div>
 
     </head>
 
@@ -89,10 +119,11 @@
 
             <input type="text" class="js-range-slider" name="my_range" value="" />
 
+            <!--
             <div id="div_credits">
                 Umberto di Canito, Daniele Buonadonna
             </div>
-
+            -->
 
 
 
@@ -100,19 +131,23 @@
             <script type="text/javascript" src="../js/team_sel_A.js"></script>
             <script type="text/javascript" src="../js/team_sel_B.js"></script>
             <script type="text/javascript" src="../js/slider_years.js"></script>
-
             <script type="text/javascript" src="../js/select_filler.js"></script>
 
+            <script type="text/javascript" src="../js/wait_window.js"></script>
 
 
 
         </div>
+
+
+
         <!--DELETE LATER-->
         <div id="notifier_div">
             <pre id="notificationTeamA"></pre>
             <pre id="notificationTeamB"></pre>
             <pre id="notificationRangeSelected"></pre>
         </div>
+
 
     </body>
 
