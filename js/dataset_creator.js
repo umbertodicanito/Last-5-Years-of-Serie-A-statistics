@@ -10,7 +10,7 @@ var data = []
 var teamNames = []
 
 /*cambiare link quando si ricaricano i dati online*/
-$.get("https://jsonstorage.net/api/items/ebec3571-fab6-4e83-8ff2-4e83834fb49d", 
+$.get("https://jsonstorage.net/api/items/881a4adb-14b5-47b2-907f-f5ca2f0a1366", 
       function(dataOnline, textStatus, jqXHR){
     data = dataOnline
 });

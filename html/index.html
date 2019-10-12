@@ -119,36 +119,39 @@
 
             <input type="text" class="js-range-slider" name="my_range" value="" />
 
-            <!--
-            <div id="div_credits">
-                Umberto di Canito, Daniele Buonadonna
+
+        </div>
+
+        <!-- GRAPHICS SPACE -->
+        <div id="div_graphs_table">
+            <div id="div_sx_container">
+                <div id="div_goals"></div>
+                <div id="div_cards"></div>
+                <div id="div_shots"></div>
+                <div id="div_quotes"></div>
             </div>
-            -->
-
-
-
-            <!-- JS external that modifies the content of page-->
-            <script type="text/javascript" src="../js/team_sel_A.js"></script>
-            <script type="text/javascript" src="../js/team_sel_B.js"></script>
-            <script type="text/javascript" src="../js/slider_years.js"></script>
-            <script type="text/javascript" src="../js/select_filler.js"></script>
-
-            <script type="text/javascript" src="../js/wait_window.js"></script>
-
-
-
+            <div id="div_dx_container">
+                <!--Table of matches between two different teams-->
+                <table id="matches_table" style="width:100%">
+                    <tbody>
+                        <tr id="legend_table">
+                            <th>Date</th>
+                            <th>Match</th>
+                            <th>Score</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 
-
-        <!--DELETE LATER-->
-        <div id="notifier_div">
-            <pre id="notificationTeamA"></pre>
-            <pre id="notificationTeamB"></pre>
-            <pre id="notificationRangeSelected"></pre>
-        </div>
-
-
+        <!-- JS external that modifies the content of page-->
+        <script type="text/javascript" src="../js/results_table.js"></script>
+        <script type="text/javascript" src="../js/team_sel_A.js"></script>
+        <script type="text/javascript" src="../js/team_sel_B.js"></script>
+        <script type="text/javascript" src="../js/slider_years.js"></script>
+        <script type="text/javascript" src="../js/select_filler.js"></script>
+        <script type="text/javascript" src="../js/wait_window.js"></script>
     </body>
 
 

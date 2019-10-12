@@ -178,3 +178,85 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
 
 
 
+/* LAYOUT DIVISION */
+#div_graphs_table {
+    position: absolute;
+    float: right;
+    width: 100%;
+    height: 89.4%;
+}
+
+#div_sx_container {
+    position: absolute;
+    float: right;
+    width: 80%;
+    height: 100%;
+    background-color: whitesmoke;
+    border: 0.2px solid black;
+}
+
+#div_dx_container {
+    float: right;
+    width: 20%;
+    background-color: whitesmoke;
+    height: 100%;
+    border: 0.2px solid black;
+}
+
+#div_goals {
+    position: absolute;
+    float: left;
+    width: 50%;
+    height: 50%;
+    border-left: 0.2px solid black; 
+    border-bottom: 0.2px solid black;
+}
+
+#div_cards {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin-left: 50%;
+    border-left: 0.2px solid black; 
+    border-bottom: 0.2px solid black; 
+}
+
+#div_shots {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    border-left: 0.2px solid black; 
+    border-bottom: 0.2px solid black; 
+}
+
+#div_quotes {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin-left: 50%;
+    top: 50%;
+    border-left: 0.2px solid black; 
+    border-bottom: 0.2px solid black; 
+}
+
+
+
+
+
+/*TABLE*/
+tr#legend_table {
+    border-bottom: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,7 @@ function retrieveIndex(param){
     }
 }
 
-function remove(){
+function removeAndUpdate(){
     var value = this.value
     var id = this.id
     if(value == null)
@@ -18,17 +18,9 @@ function remove(){
         var idSelectToAdjust = ""
         if(id === "sel_teamA"){
             idSelectToAdjust = "sel_teamB"
-            /*REMOVE IT LATER*/
-            var pre = document.getElementById("notificationTeamA")
-            pre.textContent = "Team A: " + value
-            /*---------------*/
         }
         else{
             idSelectToAdjust = "sel_teamA"
-            /*REMOVE IT LATER*/
-            var pre = document.getElementById("notificationTeamB")
-            pre.textContent = "Team B: " + value
-            /*---------------*/
         }
 
         //put back what is been before before
@@ -58,6 +50,13 @@ function remove(){
 
         $("#"+idSelectToAdjust + " option[value = " + value + "]").remove()
         $('#'+idSelectToAdjust).trigger('chosen:updated')
+        
+        /*update table*/
+        if(id === "sel_teamA"){
+            setTeamATable($( "#sel_teamA option:selected" ).text())
+        }else{
+            setTeamBTable($( "#sel_teamB option:selected" ).text())
+        }
     }
 
 }
@@ -82,7 +81,7 @@ function populateGenericSelect(teamTag){
     //giving select element new info
     select.id = "sel_team" + teamTag
     select.className = "chosen"
-    select.onchange = remove
+    select.onchange = removeAndUpdate
     //styling select element
     select.style.float = "left"
     select.style.marginLeft = "60px"
@@ -106,4 +105,4 @@ setTimeout(function(){
         populateGenericSelect("A")
         populateGenericSelect("B")
     }
-}, 2000)
+}, 2400)
