@@ -183,14 +183,14 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
     position: absolute;
     float: right;
     width: 100%;
-    height: 89.4%;
+    height: 90.5%;
 }
 
 #div_sx_container {
     position: absolute;
     float: right;
     width: 80%;
-    height: 100%;
+    height: 102.2%;
     background-color: whitesmoke;
     border: 0.2px solid black;
 }
@@ -199,7 +199,7 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
     float: right;
     width: 20%;
     background-color: whitesmoke;
-    height: 100%;
+    height: 102.2%;
     border: 0.2px solid black;
 }
 
@@ -207,15 +207,15 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
     position: absolute;
     float: left;
     width: 50%;
-    height: 50%;
+    height: 55%;
     border-left: 0.2px solid black; 
     border-bottom: 0.2px solid black;
 }
 
-#div_cards {
+#div_quotes {
     position: absolute;
     width: 50%;
-    height: 50%;
+    height: 55%;
     margin-left: 50%;
     border-left: 0.2px solid black; 
     border-bottom: 0.2px solid black; 
@@ -224,18 +224,18 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
 #div_shots {
     position: absolute;
     width: 50%;
-    height: 50%;
-    top: 50%;
+    height: 45%;
+    top: 55%;
     border-left: 0.2px solid black; 
     border-bottom: 0.2px solid black; 
 }
 
-#div_quotes {
+#div_cards {
     position: absolute;
     width: 50%;
-    height: 50%;
+    height: 45%;
     margin-left: 50%;
-    top: 50%;
+    top: 55%;
     border-left: 0.2px solid black; 
     border-bottom: 0.2px solid black; 
 }
