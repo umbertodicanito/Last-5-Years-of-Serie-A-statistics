@@ -1,4 +1,4 @@
-# Last 5 years statistics of Italian Serie A league
+# Last 5 years statistics of Italian Serie A league (2014/15 to 2018/19 seasons)
 
 ## Authors
 Umberto di Canito, Daniele Buonadonna
