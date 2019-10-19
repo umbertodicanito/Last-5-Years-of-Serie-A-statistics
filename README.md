@@ -10,3 +10,6 @@ This project was made for the exam of course "Visual Analytics" for the Sapienza
 ## Screenshots
 
 ## Technologies used
+### > Graphic libraries:
+[D3.js]: (https://d3js.org)
+[Plot.ly]: (https://plot.ly/javascript/)
