@@ -13,3 +13,8 @@ This project was made for the exam of course "Visual Analytics" for the Sapienza
 ### Graphic libraries:
 - D3.js: (https://d3js.org)
 - Plot.ly: (https://plot.ly/javascript/)
+
+### Languages:
+- HTML
+- JAVASCRIPT & JQUERY
+- CSS
