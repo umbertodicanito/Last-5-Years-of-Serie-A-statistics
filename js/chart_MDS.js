@@ -1,4 +1,4 @@
-var margin = {top:10, right:10, bottom:40, left:40},width = 525 - margin.left - margin.right, height = 400 - margin.top - margin.bottom;
+var margin = {top:5, right:10, bottom:40, left:40},width = 761 - margin.left - margin.right, height = 465 - margin.top - margin.bottom;
 var allTeamsInDataset = ["Atalanta","Benevento","Bologna","Cagliari","Carpi","Cesena","Chievo","Crotone","Empoli","Fiorentina","Frosinone","Genoa",
                         "Inter","Juventus","Lazio","Milan","Napoli","Palermo","Parma","Pescara","Roma","Sampdoria","Sassuolo","Spal","Torino",
                         "Udinese","Verona"]
@@ -155,7 +155,7 @@ function showMDSDataFromTo(fromSeason,toSeason){
             .style("opacity", 1);
         tooltip.html(d["Match"])
             .style("left", (d3.select(this).attr("cx") + 50) + "px")
-            .style("top", (d3.select(this).attr("cy") + 10) + "px");
+            .style("top", (d3.select(this).attr("cy") +10) + "px");
 
             /* Al fine di mostrare in maniera più netta a quale partita in tabella il punto faccia
             * riferimento, potremmo fare in modo che, quando il puntatore del mouse passa su un punto

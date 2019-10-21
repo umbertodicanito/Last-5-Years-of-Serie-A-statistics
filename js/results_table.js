@@ -163,6 +163,8 @@ function highlightRowTable(idPoint, color, toHighlight){
     if(toHighlight){
         document.getElementById(rowId).style["background-color"] = color
         document.getElementById(rowId).style["color"] = "white"
+        var elem = document.getElementById(rowId);  
+        elem.scrollIntoView(true); 
     }else{
         document.getElementById(rowId).style["background-color"] = "transparent"
         document.getElementById(rowId).style["color"] = "black"
