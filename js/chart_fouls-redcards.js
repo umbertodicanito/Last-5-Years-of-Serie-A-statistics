@@ -1,4 +1,14 @@
+//infos on teams
+var team_A = "(choose team A..)";
+var team_B = "(choose team B..)";
 
+//taking element from list of squad A
+function updateChartFoulsRedCardsA_B(teamA, teamB){
+    updateChartShotsA(teamA)
+    updateChartShotsB(teamB)
+    updateDatasChartShotsTeamA_B(team_A, team_B)
+    console.log(teamB)
+}
 
 //declarations of traces that will display the datas
 var trace1 = {
@@ -49,7 +59,7 @@ var trace4 = {
 
 //editing the style of graph
 var layout = {
-    title: 'Fouls and red cards',
+    title: 'Fouls and red cards of ' +team_A + ' and ' + team_B,
     xaxis: {
         title: 'Seasons',
         showgrid: true,
@@ -79,7 +89,35 @@ var data = [trace1, trace2, trace3, trace4];
 Plotly.newPlot('chart-fouls-redcards', data, layout, {displayModeBar: false}); //{modeBarButtonsToRemove: ['downloadImage', 'zoom2d', 'zoom3d', 'select2d', 'lasso2d', 'toggleSpikelines']}
 
 
-
+function updateChartFoulsRedCardsA_B(teamA, teamB){
+    
+    //update of layout
+    var update = {
+        title: 'Fouls and red cards of ' +team_A + ' and ' + team_B,
+    }
+    Plotly.relayout('chart-fouls-redcards', update)
+    
+    //update of traces
+    var update = {
+        name: team_A + ' fouls'
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [0]);
+    
+    var update = {
+        name: team_A + ' red cards'
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [1]);
+    
+    var update = {
+        name: team_B + ' fouls'
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [2]);
+    
+    var update = {
+        name: team_B + ' red cards'
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [3]);
+}
 
 
 

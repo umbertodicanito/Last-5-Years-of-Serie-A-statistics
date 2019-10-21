@@ -54,9 +54,13 @@ function removeAndUpdate(){
         /*update table*/
         if(id === "sel_teamA"){
             setTeamATable($( "#sel_teamA option:selected" ).text())
+            updateChartShotsA($( "#sel_teamA option:selected" ).text())
+            
         }else{
             setTeamBTable($( "#sel_teamB option:selected" ).text())
+            updateChartShotsB($( "#sel_teamB option:selected" ).text())
         }
+        updateChartFoulsRedCardsA_B($( "#sel_teamA option:selected" ).text(), $( "#sel_teamB option:selected" ).text())
     }
 
 }
