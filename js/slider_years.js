@@ -7,27 +7,24 @@ var triggerChange = function(data){
     var awayTeam = $("#sel_teamB option:selected").text()
     var fromValue = 5 - data.from
     var toValue = 5 - data.to
-    if(homeTeam !== "Choose team A..." && awayTeam !== "Choose team B..."){
-        var dateFrom = values_seasons[data.from]
-        var dateTo = values_seasons[data.to]
-        createTableFor(homeTeam,awayTeam,dateFrom,dateTo)
-        /*changing points shown on MDS graph*/
-        var seasons = []
-        x = toValue
-        while(x <= fromValue){
-            seasons.push(x)
-            x++
-        }
-        showMDSDataFromTo(toValue,fromValue)
-        selectionMDS(seasons,homeTeam,awayTeam)
-        
-    }else{
-        /*changing points shown on MDS graph*/
-        showMDSDataFromTo(toValue,fromValue)
-        
+    if(homeTeam === "Choose team A...")
+        homeTeam = null
+    if(awayTeam === "Choose team B...")
+        awayTeam = null
+    var dateFrom = values_seasons[data.from]
+    var dateTo = values_seasons[data.to]
+    createTableFor(homeTeam,awayTeam,dateFrom,dateTo)
+    /*changing points shown on MDS graph*/
+    var seasons = []
+    x = toValue
+    while(x <= fromValue){
+        seasons.push(x)
+        x++
     }
-    
-    
+    showMDSDataFromTo(toValue,fromValue)
+    selectionMDS(seasons,homeTeam,awayTeam)
+
+
 }
 $(".js-range-slider").ionRangeSlider({
     type: "double",
