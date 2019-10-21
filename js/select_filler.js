@@ -47,16 +47,24 @@ function removeAndUpdate(){
             }
             teamADeleted = value
         }
-
-        $("#"+idSelectToAdjust + " option[value = " + value + "]").remove()
-        $('#'+idSelectToAdjust).trigger('chosen:updated')
-        
-        /*update table*/
-        if(id === "sel_teamA"){
-            setTeamATable($( "#sel_teamA option:selected" ).text())
-        }else{
-            setTeamBTable($( "#sel_teamB option:selected" ).text())
+        try{
+            $("#"+idSelectToAdjust + " option[value = " + value + "]").remove()
+        }catch(err){
         }
+        $('#'+idSelectToAdjust).trigger('chosen:updated')
+
+        /*UPDATING VISUALIZATIONS*/
+        /*update table and MDS*/
+        var t = ""
+        if(id === "sel_teamA"){
+            t = $( "#sel_teamA option:selected" ).text()
+            setTeamATable(t)
+            setTeamAMDS(t)
+        }else{
+            t = $( "#sel_teamB option:selected" ).text()
+            setTeamBTable(t)
+            setTeamBMDS(t)
+        }        
     }
 
 }

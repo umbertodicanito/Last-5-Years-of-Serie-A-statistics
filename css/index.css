@@ -82,6 +82,22 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
 
 
 
+/*TABLE ROW*/
+.table_row {
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    -khtml-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+    -webkit-transition: color 0.15s ease-in-out;
+    -moz-transition: color 0.15s ease-in-out;
+    -o-transition: color 0.15s ease-in-out;
+    -khtml-transition: color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out;
+}
+
+
+
 
 /* CREDITS BOX */
 #div_credits {
