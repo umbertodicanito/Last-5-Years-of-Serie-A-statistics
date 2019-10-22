@@ -135,9 +135,28 @@
             <div id="div_sx_container">
 
 
-                <div id="div_goals"></div>
+                <div id="div_goals">
 
-              
+                    <div id="div_goals_teamA">
+                        <!-- <svg id="chart-goals-teamA"></svg>-->
+                        <form>
+                            <label><input type="radio" name="mode" value="percent_A"> Percent</label>
+                            <label><input type="radio" name="mode" value="grouped_A"> Grouped</label>
+                            <label><input type="radio" name="mode" value="stacked_A" checked> Stacked</label>
+                        </form>
+                    </div>
+
+                    <div id="div_goals_teamB">
+                        <!-- <svg id="chart-goals-teamA"></svg>-->
+                        <form>
+                            <label><input type="radio" name="mode" value="percent_B"> Percent</label>
+                            <label><input type="radio" name="mode" value="grouped_B"> Grouped</label>
+                            <label><input type="radio" name="mode" value="stacked_B" checked> Stacked</label>
+                        </form>
+                    </div>
+                </div>
+
+
                 <!-- Graph of fouls committed by home team and relative red cards -->
                 <div id="div_quotes">
                     <h1 id="title_quotes">Balance of matches</h1>
@@ -208,6 +227,8 @@
         <script type="text/javascript" src="../js/chart-shots-teamB.js"></script>
         <script type="text/javascript" src="../js/chart_fouls-redcards.js"></script>
         <script type="text/javascript" src="../js/chart_MDS.js"></script>
+        <script type="text/javascript" src="../js/chart_goals_teamA.js"></script>
+        <script type="text/javascript" src="../js/chart_goals_teamB.js"></script>
     </body>
 
 

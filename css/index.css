@@ -310,6 +310,19 @@ h1#legend_quotes {
     border-bottom: 0.2px solid black;
 }
 
+#div_goals_teamA {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+
+#div_goals_teamB {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    margin-left: 50%;
+}
+
 #div_quotes {
     position: absolute;
     width: 50%;
