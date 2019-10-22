@@ -47,18 +47,25 @@ function removeAndUpdate(){
             }
             teamADeleted = value
         }
-
-        $("#"+idSelectToAdjust + " option[value = " + value + "]").remove()
+        try{
+            $("#"+idSelectToAdjust + " option[value = " + value + "]").remove()
+        }catch(err){
+        }
         $('#'+idSelectToAdjust).trigger('chosen:updated')
-        
-        /*update table*/
+
+        /*UPDATING VISUALIZATIONS*/
+        /*update table and MDS*/
+        var t = ""
         if(id === "sel_teamA"){
-            setTeamATable($( "#sel_teamA option:selected" ).text())
+            t = $( "#sel_teamA option:selected" ).text()
+            setTeamATable(t)
+            setTeamAMDS(t)
             updateChartShotsA($( "#sel_teamA option:selected" ).text())
-            
         }else{
-            setTeamBTable($( "#sel_teamB option:selected" ).text())
-            updateChartShotsB($( "#sel_teamB option:selected" ).text())
+            t = $( "#sel_teamB option:selected" ).text()
+            setTeamBTable(t)
+            setTeamBMDS(t)
+            updateChartShotsB(t)
         }
         updateChartFoulsRedCardsA_B($( "#sel_teamA option:selected" ).text(), $( "#sel_teamB option:selected" ).text())
     }

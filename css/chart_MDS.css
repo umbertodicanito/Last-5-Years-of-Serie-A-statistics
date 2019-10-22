@@ -1,0 +1,30 @@
+svg {
+    font: 11px sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.dot {
+    position: relative;
+    stroke: #000;
+    z-index: 20;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    height: 12px;
+    padding: 8px;
+    margin-top: 40px;
+    font: 10px sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    background: #ddd;
+    pointer-events: none;
+}

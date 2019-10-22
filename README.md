@@ -1,4 +1,4 @@
-# Last 5 years statistics of Italian Serie A league (2014/15 to 2018/19 seasons)
+# Last 5 Years statistics of Italian Serie A league
 
 ## Authors
 Umberto di Canito, Daniele Buonadonna
@@ -10,11 +10,3 @@ This project was made for the exam of course "Visual Analytics" for the Sapienza
 ## Screenshots
 
 ## Technologies used
-### Graphic libraries:
-- D3.js: (https://d3js.org)
-- Plot.ly: (https://plot.ly/javascript/)
-
-### Languages:
-- HTML
-- JAVASCRIPT & JQUERY
-- CSS

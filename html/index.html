@@ -24,6 +24,7 @@
         <!-- EXTERNAL CSS & JAVASCRIPTS -->
         <!-- CSSes external-->
         <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/chart_MDS.css">
         <link rel="stylesheet" type="text/css" href="../css/chart-shots-teamA.css">
         <link rel="stylesheet" type="text/css" href="../css/chart-shots-teamB.css">
         <link rel="stylesheet" type="text/css" href="../css/chart_fouls-redcards.css">
@@ -130,14 +131,23 @@
         </div>
 
         <!-- GRAPHICS SPACE -->
-        <div id="div_graphs_table">
+        <div id="div_graphs_table" class="noselect">
             <div id="div_sx_container">
 
 
                 <div id="div_goals"></div>
 
+              
+                <!-- Graph of fouls committed by home team and relative red cards -->
+                <div id="div_quotes">
+                    <h1 id="title_quotes">Balance of matches</h1>
+                    <h1 id="legend_quotes">
+                        <span style="color:#10bf00;">■ balanced match &nbsp; &nbsp;</span>
+                        <span style="color:#ebb800;">■ softly unbalanced match &nbsp; &nbsp;</span>
+                        <span style="color:#ff0000;">■ unbalanced match &nbsp; &nbsp;</span>
+                    </h1>
 
-                <div id="div_quotes"></div>
+                </div>
 
 
                 <!-- Graph of shots (total home/away, on target/total) done by both teams -->
@@ -157,16 +167,29 @@
 
             </div>
             <div id="div_dx_container">
-                <!--Table of matches between two different teams-->
-                <table id="matches_table" style="width:100%">
-                    <tbody>
-                        <tr id="legend_table">
-                            <th>Date</th>
-                            <th>Match</th>
-                            <th>Score</th>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="div_dx_container_top">
+                    <table id="matches_table_title" style="width:100%">
+                        <tbody>
+                            <tr id="legend_table_title">
+                                <th>Date</th>
+                                <th>Match</th>
+                                <th>Score</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="div_dx_container_bottom">
+                    <!--Table of matches between two different teams-->
+                    <table id="matches_table" style="width:100%">
+                        <tbody>
+                            <tr id="legend_table">
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -184,8 +207,7 @@
         <script type="text/javascript" src="../js/chart-shots-teamA.js"></script>
         <script type="text/javascript" src="../js/chart-shots-teamB.js"></script>
         <script type="text/javascript" src="../js/chart_fouls-redcards.js"></script>
-
-
+        <script type="text/javascript" src="../js/chart_MDS.js"></script>
     </body>
 
 

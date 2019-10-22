@@ -9,10 +9,20 @@ body {
     background-color: whitesmoke;
     border-bottom: 1px solid black;
 }
+/* no selectable text */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
 html {
     overflow-y: hidden; 
 }
-
 
 
 
@@ -70,7 +80,7 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
 
 #div_menu > span > span.irs-bar {
     background: rgb(0,0,0);
-    background:  linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(38,163,215,1) 100%)
+    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(38,163,215,1) 100%)
 }
 
 #div_menu > span > span.irs > span.irs-from, #div_menu > span > span.irs > span.irs-to {
@@ -82,6 +92,61 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
     color: black;
 }
 
+
+
+
+/*TABLE */
+.table_row {
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    -khtml-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+    -webkit-transition: color 0.15s ease-in-out;
+    -moz-transition: color 0.15s ease-in-out;
+    -o-transition: color 0.15s ease-in-out;
+    -khtml-transition: color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out;
+}
+
+tr#legend_table {
+    border-bottom: 1px solid black;
+}
+
+table {
+    width: 716px; /* 140px * 5 column + 16px scrollbar width */
+    border-spacing: 0;
+}
+
+table.no-spacing {
+    border-spacing:0; /* Removes the cell spacing via CSS */
+    border-collapse: collapse;  /* Optional - if you don't want to have double border where cells touch */
+}
+
+
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white; 
+    border-radius: 1px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(38,163,215,1) 100%);
+    border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+}
 
 
 
@@ -177,7 +242,24 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
     color: white;
 }
 
+#title_quotes {
+    font-size: 17px;
+    font-weight: normal;
+    white-space: pre;
+    opacity: 1;
+    font-family: "Open Sans", verdana, arial, sans-serif;
+    color: rgb(68, 68, 68);
+    text-align: center;
+}
 
+h1#legend_quotes {
+    font-size: 14px;
+    font-weight: normal;
+    opacity: 1;
+    font-family: "Open Sans", verdana, arial, sans-serif;
+    color: rgb(68, 68, 68);
+    text-align: center;
+}
 
 
 
@@ -204,6 +286,19 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
     background-color: whitesmoke;
     height: 102.2%;
     border: 0.2px solid black;
+}
+
+#div_dx_container_top{
+    float:right;
+    width: 100%;
+    height: 3%;
+}
+
+#div_dx_container_bottom{
+    float:right;
+    width: 100%;
+    height: 95%;
+    overflow-y: scroll;
 }
 
 #div_goals {
@@ -260,10 +355,6 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
 
 
 
-/*TABLE*/
-tr#legend_table {
-    border-bottom: 1px solid black;
-}
 
 
 
