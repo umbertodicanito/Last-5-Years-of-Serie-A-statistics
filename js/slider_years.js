@@ -3,17 +3,19 @@ var season_from = values_seasons.indexOf("2015/16");
 var season_to = values_seasons.indexOf("2017/18");
 
 var triggerChange = function(data){
-    var homeTeam = $("#sel_teamA option:selected").text()
-    var awayTeam = $("#sel_teamB option:selected").text()
+    season_from = data.from
+    season_to = data.to
+    var teamA = $("#sel_teamA option:selected").text()
+    var teamB = $("#sel_teamB option:selected").text()
     var fromValue = 5 - data.from
     var toValue = 5 - data.to
-    if(homeTeam === "Choose team A...")
-        homeTeam = null
-    if(awayTeam === "Choose team B...")
-        awayTeam = null
+    if(teamA === "Choose team A...")
+        teamA = null
+    if(teamB === "Choose team B...")
+        teamB = null
     var dateFrom = values_seasons[data.from]
     var dateTo = values_seasons[data.to]
-    createTableFor(homeTeam,awayTeam,dateFrom,dateTo)
+    createTableFor(teamA,teamB,dateFrom,dateTo)
     /*changing points shown on MDS graph*/
     var seasons = []
     x = toValue
@@ -22,10 +24,13 @@ var triggerChange = function(data){
         x++
     }
     showMDSDataFromTo(toValue,fromValue)
-    selectionMDS(seasons,homeTeam,awayTeam)
-
-
+    selectionMDS(seasons,teamA,teamB)
+    /*updating chart fouls and red cards for both teams*/
+    updateChartFoulsRedCardsA_B(teamA,teamB)
+    updateChartShotsA(teamA)
+    updateChartShotsB(teamB)
 }
+
 $(".js-range-slider").ionRangeSlider({
     type: "double",
     grid: true,

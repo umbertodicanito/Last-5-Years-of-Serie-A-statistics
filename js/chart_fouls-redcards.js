@@ -1,205 +1,138 @@
-var data = [
-  {
-    name: "USA",
-    values: [
-      {date: "2000", price: "100"},
-      {date: "2001", price: "110"},
-      {date: "2002", price: "145"},
-      {date: "2003", price: "241"},
-      {date: "2004", price: "101"},
-      {date: "2005", price: "90"},
-      {date: "2006", price: "10"},
-      {date: "2007", price: "35"},
-      {date: "2008", price: "21"},
-      {date: "2009", price: "201"}
-    ]
-  },
-  {
-    name: "Canada",
-    values: [
-      {date: "2000", price: "200"},
-      {date: "2001", price: "120"},
-      {date: "2002", price: "33"},
-      {date: "2003", price: "21"},
-      {date: "2004", price: "51"},
-      {date: "2005", price: "190"},
-      {date: "2006", price: "120"},
-      {date: "2007", price: "85"},
-      {date: "2008", price: "221"},
-      {date: "2009", price: "101"}
-    ]
-  },
-  {
-    name: "Maxico",
-    values: [
-      {date: "2000", price: "50"},
-      {date: "2001", price: "10"},
-      {date: "2002", price: "5"},
-      {date: "2003", price: "71"},
-      {date: "2004", price: "20"},
-      {date: "2005", price: "9"},
-      {date: "2006", price: "220"},
-      {date: "2007", price: "235"},
-      {date: "2008", price: "61"},
-      {date: "2009", price: "10"}
-    ]
-  }
-];
+//infos on teams
+var team_A = "(choose team A..)";
+var team_B = "(choose team B..)";
 
-var width = 700;
-var height = 450;
-var margin = 50;
-var duration = 250;
+//taking element from list of squad A
+function updateChartFoulsRedCardsA_B(teamA, teamB){
+    updateChartShotsA(teamA)
+    updateChartShotsB(teamB)
+    updateDatasChartShotsTeamA_B(team_A, team_B)
+}
 
-var lineOpacity = "0.25";
-var lineOpacityHover = "0.85";
-var otherLinesOpacityHover = "0.1";
-var lineStroke = "1.5px";
-var lineStrokeHover = "2.5px";
+//declarations of traces that will display the datas
+var trace1 = {
+    x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
+    y: [null,null,null,null,null],
+    type: 'scatter',
+    name: team_A + ' fouls',
+    line: {
+        width: 2,
+        color: 'rgb(0, 20, 220)'
+    }
+};
 
-var circleOpacity = '0.85';
-var circleOpacityOnLineHover = "0.25"
-var circleRadius = 3;
-var circleRadiusHover = 6;
+var trace2 = {
+    x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
+    y: [null,null,null,null,null],
+    type: 'scatter',
+    name: team_A + ' red cards',
+    line: {
+        width: 1,
+        color: 'rgb(0, 20, 220)',
+        dash: 'dot'
+    }
+};
 
+var trace3 = {
+    x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
+    y: [null,null,null,null,null],
+    type: 'scatter',
+    name: team_B + ' fouls',
+    line: {
+        width: 2,
+        color: 'rgb(255, 135, 25)'
+    }
+};
 
-/* Format Data */
-var parseDate = d3.timeParse("%Y");
-data.forEach(function(d) { 
-  d.values.forEach(function(d) {
-    d.date = parseDate(d.date);
-    d.price = +d.price;    
-  });
-});
+var trace4 = {
+    x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
+    y: [null,null,null,null,null],
+    type: 'scatter',
+    name: team_B + ' red cards',
+    line: {
+        width: 1,
+        color: 'rgb(255, 135, 25)',
+        dash: 'dot'
+    }
+};
 
+//editing the style of graph
+var layout = {
+    title: 'Fouls and red cards of ' +team_A + ' and ' + team_B,
+    xaxis: {
+        title: 'Seasons',
+        showgrid: true,
+        zeroline: false,
+        fixedrange:true 
+    },
+    yaxis: {
+        title: 'Numbers of Fouls / red cards',
+        showline: false,
+        showgrid: true,
+        zeroline:true,
+        rangemode: 'nonnegative',
+        fixedrange:true
+    },
+    showlegend: true,
+    legend: {
+        xanchor:"center",
+        yanchor:"top",
+        y:-0.3,
+        x:0.5,
+        "orientation": "h"
+    }
+};
 
-/* Scale */
-var xScale = d3.scaleTime()
-  .domain(d3.extent(data[0].values, d => d.date))
-  .range([0, width-margin]);
-
-var yScale = d3.scaleLinear()
-  .domain([0, d3.max(data[0].values, d => d.price)])
-  .range([height-margin, 0]);
-
-var color = d3.scaleOrdinal(d3.schemeCategory10);
-
-/* Add SVG */
-var svg = d3.select("#chart").append("svg")
-  .attr("width", (width+margin)+"px")
-  .attr("height", (height+margin)+"px")
-  .append('g')
-  .attr("transform", `translate(${margin}, ${margin})`);
+//launch of plot
+var dataRedCardsPlot = [trace1, trace2, trace3, trace4];
+Plotly.newPlot('chart-fouls-redcards', dataRedCardsPlot, layout, {displayModeBar: false}); //{modeBarButtonsToRemove: ['downloadImage', 'zoom2d', 'zoom3d', 'select2d', 'lasso2d', 'toggleSpikelines']}
 
 
-/* Add line into SVG */
-var line = d3.line()
-  .x(d => xScale(d.date))
-  .y(d => yScale(d.price));
+function updateChartFoulsRedCardsA_B(teamA, teamB){
 
-let lines = svg.append('g')
-  .attr('class', 'lines');
+    var computedTitle = "Fouls and red cards"
+    if(teamA !== "Choose team A..." && teamB !== "Choose team B...")
+        computedTitle = computedTitle + " of " + teamA + " and " + teamB
+    else if(teamA === "Choose team A..." && teamB !== "Choose team B...")
+        computedTitle = computedTitle + " of " + teamB
+    else if(teamB === "Choose team B..." && teamA !== "Choose team A...")
+        computedTitle = computedTitle + " of " + teamA
 
-lines.selectAll('.line-group')
-  .data(data).enter()
-  .append('g')
-  .attr('class', 'line-group')  
-  .on("mouseover", function(d, i) {
-      svg.append("text")
-        .attr("class", "title-text")
-        .style("fill", color(i))        
-        .text(d.name)
-        .attr("text-anchor", "middle")
-        .attr("x", (width-margin)/2)
-        .attr("y", 5);
-    })
-  .on("mouseout", function(d) {
-      svg.select(".title-text").remove();
-    })
-  .append('path')
-  .attr('class', 'line')  
-  .attr('d', d => line(d.values))
-  .style('stroke', (d, i) => color(i))
-  .style('opacity', lineOpacity)
-  .on("mouseover", function(d) {
-      d3.selectAll('.line')
-					.style('opacity', otherLinesOpacityHover);
-      d3.selectAll('.circle')
-					.style('opacity', circleOpacityOnLineHover);
-      d3.select(this)
-        .style('opacity', lineOpacityHover)
-        .style("stroke-width", lineStrokeHover)
-        .style("cursor", "pointer");
-    })
-  .on("mouseout", function(d) {
-      d3.selectAll(".line")
-					.style('opacity', lineOpacity);
-      d3.selectAll('.circle')
-					.style('opacity', circleOpacity);
-      d3.select(this)
-        .style("stroke-width", lineStroke)
-        .style("cursor", "none");
-    });
+    //update of layout
+    var update = {
+        title: computedTitle
+    }
+    Plotly.relayout('chart-fouls-redcards', update)
+
+    var dataCharFoulsAndRedCardTeamA = getFoulsAndRedCardsForTeam(team_A)
+    var dataCharFoulsAndRedCardTeamB = getFoulsAndRedCardsForTeam(team_B)
+    //update of traces
+    var update = {
+        name: team_A + ' fouls',
+        y:[dataCharFoulsAndRedCardTeamA[0]]
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [0]);
+
+    var update = {
+        name: team_A + ' red cards',
+        y: [dataCharFoulsAndRedCardTeamA[1]]
+
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [1]);
+
+    var update = {
+        name: team_B + ' fouls',
+        y: [dataCharFoulsAndRedCardTeamB[0]]
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [2]);
+
+    var update = {
+        name: team_B + ' red cards',
+        y:[dataCharFoulsAndRedCardTeamB[1]]
+    }
+    Plotly.restyle('chart-fouls-redcards', update, [3]);
+}
 
 
-/* Add circles in the line */
-lines.selectAll("circle-group")
-  .data(data).enter()
-  .append("g")
-  .style("fill", (d, i) => color(i))
-  .selectAll("circle")
-  .data(d => d.values).enter()
-  .append("g")
-  .attr("class", "circle")  
-  .on("mouseover", function(d) {
-      d3.select(this)     
-        .style("cursor", "pointer")
-        .append("text")
-        .attr("class", "text")
-        .text(`${d.price}`)
-        .attr("x", d => xScale(d.date) + 5)
-        .attr("y", d => yScale(d.price) - 10);
-    })
-  .on("mouseout", function(d) {
-      d3.select(this)
-        .style("cursor", "none")  
-        .transition()
-        .duration(duration)
-        .selectAll(".text").remove();
-    })
-  .append("circle")
-  .attr("cx", d => xScale(d.date))
-  .attr("cy", d => yScale(d.price))
-  .attr("r", circleRadius)
-  .style('opacity', circleOpacity)
-  .on("mouseover", function(d) {
-        d3.select(this)
-          .transition()
-          .duration(duration)
-          .attr("r", circleRadiusHover);
-      })
-    .on("mouseout", function(d) {
-        d3.select(this) 
-          .transition()
-          .duration(duration)
-          .attr("r", circleRadius);  
-      });
 
 
-/* Add Axis into SVG */
-var xAxis = d3.axisBottom(xScale).ticks(5);
-var yAxis = d3.axisLeft(yScale).ticks(5);
-
-svg.append("g")
-  .attr("class", "x axis")
-  .attr("transform", `translate(0, ${height-margin})`)
-  .call(xAxis);
-
-svg.append("g")
-  .attr("class", "y axis")
-  .call(yAxis)
-  .append('text')
-  .attr("y", 15)
-  .attr("transform", "rotate(-90)")
-  .attr("fill", "#000")
-  .text("Total values");

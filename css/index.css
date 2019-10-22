@@ -20,6 +20,10 @@ body {
                                   supported by Chrome, Opera and Firefox */
 }
 
+html {
+    overflow-y: hidden; 
+}
+
 
 
 
@@ -315,13 +319,26 @@ h1#legend_quotes {
     border-bottom: 0.2px solid black; 
 }
 
-#div_shots {
+#div_shots_teamA {
     position: absolute;
-    width: 50%;
+    width: 25%;
     height: 45%;
     top: 55%;
     border-left: 0.2px solid black; 
     border-bottom: 0.2px solid black; 
+    background-color: white;
+}
+
+#div_shots_teamB { 
+    position: absolute;
+    width: 25%;
+    height: 45%;
+    top: 55%;
+    left: 25.06%;
+    border-right: 0.2px solid black; 
+    border-bottom: 0.2px solid black; 
+    z-index: 2;
+    background-color: white;
 }
 
 #div_cards {
@@ -339,6 +356,13 @@ h1#legend_quotes {
 
 
 
+
+
+/* FOULS AND RED CARDS CHART */
+#chart {
+    margin-left: 30px;
+    margin-top: 30px;
+}
 
 
 
