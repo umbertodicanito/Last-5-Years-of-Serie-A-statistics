@@ -116,7 +116,7 @@ function getPrecisionShotsFor(team){
     }
 
     //appending last info not catched by the for loop
-    if(homeShots != 0){
+    if(homeShotsForThisYear != 0){
         homeShots.push(homeShotsForThisYear)
         homeShotsOnTarget.push(homeShotsOnTargetForThisYear)
         awayShots.push(awayShotsForThisYear)

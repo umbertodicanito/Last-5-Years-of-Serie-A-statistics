@@ -1,21 +1,21 @@
-var team_A = ""
-var team_B = ""
+var team_A_table = ""
+var team_B_table = ""
 var date_From = "2015/16"
 var date_To = "2017/18"
 
 function setTeamATable(name){
-    if(name === "Choose team A...")
-        team_A = ""
+    if(name === "Choose team A..." || name === "(choose team A..)")
+        team_A_table = ""
     else
-        team_A = name
+        team_A_table = name
     updateTable()
 }
 
 function setTeamBTable(name){
-    if(name === "Choose team B...")
-        team_B = ""
+    if(name === "Choose team B..." || name === "(choose team B..)")
+        team_B_table = ""
     else
-        team_B = name
+        team_B_table = name
     updateTable()
 }
 
@@ -139,8 +139,8 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
         $('#matches_table tr:last').after(elementsToAdd);
 
         if(elementsToAdd.length != 0){
-            team_A = teamA
-            team_B = teamB
+            team_A_table = teamA
+            team_B_table = teamB
             date_From = dateFrom
             date_To = dateTo
         }
@@ -148,14 +148,15 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
 }
 
 function updateTable(){
-    if(team_A === "" && team_B === "")
+    console.log(team_A_table + " - " + team_B_table)
+    if(team_A_table === "" && team_B_table === "")
         createTableFor(null, null, null, null)
-    else if(team_A === "")
-        createTableFor(null, team_B, date_From, date_To)
+    else if(team_A_table === "")
+        createTableFor(null, team_B_table, date_From, date_To)
     else if (team_B === "")
-        createTableFor(team_A, null, date_From, date_To)
+        createTableFor(team_A_table, null, date_From, date_To)
     else
-        createTableFor(team_A, team_B, date_From, date_To)
+        createTableFor(team_A_table, team_B_table, date_From, date_To)
 }
 
 function highlightRowTable(idPoint, color, toHighlight){

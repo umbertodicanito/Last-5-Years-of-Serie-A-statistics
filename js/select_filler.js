@@ -13,7 +13,7 @@ function removeAndUpdate(){
     var value = this.value
     var id = this.id
     if(value == null)
-        alert("Null value")
+        alert("Null value selected")
     else{
         var idSelectToAdjust = ""
         if(id === "sel_teamA"){

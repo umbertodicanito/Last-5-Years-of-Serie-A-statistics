@@ -89,7 +89,6 @@ Plotly.newPlot('chart-shots-teamA', data, layout, {displayModeBar: false}); //{m
 
 
 function updateDatasChartShotsTeamA(team){
-    console.log("chart A: " + team)
     if(team != null){
         var dataForChartShot = getPrecisionShotsFor(team)
         //update of layout
