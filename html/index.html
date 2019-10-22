@@ -6,9 +6,13 @@
 
     <head>
         <!-- LIBRARIES -->
+        <!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
         <!-- D3.js lib -->
         <script src="../lib/d3/d3.min.js" type="text/javascript"></script>
         <script src="../lib/d3/d3.js" type="text/javascript"></script>
+        <script src="https://d3js.org/d3.v3.js" charset="utf-8"></script>
 
         <!-- Jquery lib -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,6 +24,9 @@
         <!-- EXTERNAL CSS & JAVASCRIPTS -->
         <!-- CSSes external-->
         <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link rel="stylesheet" type="text/css" href="../css/chart-shots-teamA.css">
+        <link rel="stylesheet" type="text/css" href="../css/chart-shots-teamB.css">
+        <link rel="stylesheet" type="text/css" href="../css/chart_fouls-redcards.css">
 
         <!-- FONT -->
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
@@ -117,7 +124,7 @@
             </div>
 
 
-            <input type="text" class="js-range-slider" name="my_range" value="" />
+            <input id="slider_year" type="text" class="js-range-slider" name="my_range" value="" />
 
 
         </div>
@@ -125,15 +132,29 @@
         <!-- GRAPHICS SPACE -->
         <div id="div_graphs_table">
             <div id="div_sx_container">
+
+
                 <div id="div_goals"></div>
 
 
-                <!-- Graph of fouls committed by home team and relative red cards -->
                 <div id="div_quotes"></div>
 
 
-                <div id="div_shots"></div>
-                <div id="div_cards"></div>
+                <!-- Graph of shots (total home/away, on target/total) done by both teams -->
+                <div id="div_shots_teamA">
+                    <div id="chart-shots-teamA"></div>
+                </div>
+                <div id="div_shots_teamB">
+                    <div id="chart-shots-teamB"></div>
+                </div>
+
+
+                <!-- Graph of fouls committed by home team and relative red cards -->
+                <div id="div_cards">
+                    <div id="chart-fouls-redcards"></div>
+                </div>
+
+
             </div>
             <div id="div_dx_container">
                 <!--Table of matches between two different teams-->
@@ -149,7 +170,7 @@
             </div>
         </div>
 
-
+        <!--JS EXTERNAL ABOUT THE CONTENT OF THE PAGE-->
         <!-- JS external that modifies the content of page-->
         <script type="text/javascript" src="../js/results_table.js"></script>
         <script type="text/javascript" src="../js/team_sel_A.js"></script>
@@ -157,10 +178,14 @@
         <script type="text/javascript" src="../js/slider_years.js"></script>
         <script type="text/javascript" src="../js/select_filler.js"></script>
         <script type="text/javascript" src="../js/wait_window.js"></script>
-        
+        <script type="text/javascript" src="../js/dataset_selector.js"></script>
+
         <!-- JS external related to graphs-->
+        <script type="text/javascript" src="../js/chart-shots-teamA.js"></script>
+        <script type="text/javascript" src="../js/chart-shots-teamB.js"></script>
         <script type="text/javascript" src="../js/chart_fouls-redcards.js"></script>
-        
+
+
     </body>
 
 
