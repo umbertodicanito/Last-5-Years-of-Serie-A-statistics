@@ -7,13 +7,12 @@ function updateChartFoulsRedCardsA_B(teamA, teamB){
     updateChartShotsA(teamA)
     updateChartShotsB(teamB)
     updateDatasChartShotsTeamA_B(team_A, team_B)
-    console.log(teamB)
 }
 
 //declarations of traces that will display the datas
 var trace1 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
-    y: [10, 15, 13, 17, 4],
+    y: [null,null,null,null,null],
     type: 'scatter',
     name: team_A + ' fouls',
     line: {
@@ -24,7 +23,7 @@ var trace1 = {
 
 var trace2 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
-    y: [26, 5, 11, 9, 8],
+    y: [null,null,null,null,null],
     type: 'scatter',
     name: team_A + ' red cards',
     line: {
@@ -36,7 +35,7 @@ var trace2 = {
 
 var trace3 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
-    y: [2, 6, 12, 5, 9],
+    y: [null,null,null,null,null],
     type: 'scatter',
     name: team_B + ' fouls',
     line: {
@@ -47,7 +46,7 @@ var trace3 = {
 
 var trace4 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
-    y: [4, 5, 4, 5, 5],
+    y: [null,null,null,null,null],
     type: 'scatter',
     name: team_B + ' red cards',
     line: {
@@ -85,36 +84,51 @@ var layout = {
 };
 
 //launch of plot
-var data = [trace1, trace2, trace3, trace4];
-Plotly.newPlot('chart-fouls-redcards', data, layout, {displayModeBar: false}); //{modeBarButtonsToRemove: ['downloadImage', 'zoom2d', 'zoom3d', 'select2d', 'lasso2d', 'toggleSpikelines']}
+var dataRedCardsPlot = [trace1, trace2, trace3, trace4];
+Plotly.newPlot('chart-fouls-redcards', dataRedCardsPlot, layout, {displayModeBar: false}); //{modeBarButtonsToRemove: ['downloadImage', 'zoom2d', 'zoom3d', 'select2d', 'lasso2d', 'toggleSpikelines']}
 
 
 function updateChartFoulsRedCardsA_B(teamA, teamB){
-    
+
+    var computedTitle = "Fouls and red cards"
+    if(teamA !== "Choose team A..." && teamB !== "Choose team B...")
+        computedTitle = computedTitle + " of " + teamA + " and " + teamB
+    else if(teamA === "Choose team A..." && teamB !== "Choose team B...")
+        computedTitle = computedTitle + " of " + teamB
+    else if(teamB === "Choose team B..." && teamA !== "Choose team A...")
+        computedTitle = computedTitle + " of " + teamA
+
     //update of layout
     var update = {
-        title: 'Fouls and red cards of ' +team_A + ' and ' + team_B,
+        title: computedTitle
     }
     Plotly.relayout('chart-fouls-redcards', update)
-    
+
+    var dataCharFoulsAndRedCardTeamA = getFoulsAndRedCardsForTeam(team_A)
+    var dataCharFoulsAndRedCardTeamB = getFoulsAndRedCardsForTeam(team_B)
     //update of traces
     var update = {
-        name: team_A + ' fouls'
+        name: team_A + ' fouls',
+        y:[dataCharFoulsAndRedCardTeamA[0]]
     }
     Plotly.restyle('chart-fouls-redcards', update, [0]);
-    
+
     var update = {
-        name: team_A + ' red cards'
+        name: team_A + ' red cards',
+        y: [dataCharFoulsAndRedCardTeamA[1]]
+
     }
     Plotly.restyle('chart-fouls-redcards', update, [1]);
-    
+
     var update = {
-        name: team_B + ' fouls'
+        name: team_B + ' fouls',
+        y: [dataCharFoulsAndRedCardTeamB[0]]
     }
     Plotly.restyle('chart-fouls-redcards', update, [2]);
-    
+
     var update = {
-        name: team_B + ' red cards'
+        name: team_B + ' red cards',
+        y:[dataCharFoulsAndRedCardTeamB[1]]
     }
     Plotly.restyle('chart-fouls-redcards', update, [3]);
 }
