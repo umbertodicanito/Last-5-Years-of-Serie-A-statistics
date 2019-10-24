@@ -60,12 +60,14 @@ function removeAndUpdate(){
             t = $( "#sel_teamA option:selected" ).text()
             setTeamATable(t)
             setTeamAMDS(t)
-            updateChartShotsA($( "#sel_teamA option:selected" ).text())
+            updateChartShotsA(t)
+            updateChartGoalsForTeamA(t)
         }else{
             t = $( "#sel_teamB option:selected" ).text()
             setTeamBTable(t)
             setTeamBMDS(t)
             updateChartShotsB(t)
+            updateChartGoalsForTeamB(t)
         }
         updateChartFoulsRedCardsA_B($( "#sel_teamA option:selected" ).text(), $( "#sel_teamB option:selected" ).text())
     }

@@ -88,12 +88,8 @@ Plotly.newPlot('chart-shots-teamB', data, layout, {displayModeBar: false}); //{m
 
 
 function updateDatasChartShotsTeamB(team){
-    console.log("chartB: " + team)
     if(team != null){
         var dataForChartShot = getPrecisionShotsFor(team)
-        console.log("Raw data: " + dataForChartShot)
-        console.log("")
-        console.log("data for chart B: " + team + "\n Tot Home S: " + dataForChartShot[0] + "\n On target home shots: " + dataForChartShot[2] + "\n Tot Away S: " + dataForChartShot[1] + "\n On target away shots: " + dataForChartShot[3])
         //update of layout
         var update = {
             title: 'Shots precision of '+ team_B,
