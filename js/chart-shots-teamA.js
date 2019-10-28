@@ -16,7 +16,7 @@ var trace1 = {
     name: 'tot. home shots',
     line: {
         width: 2,
-        color: 'rgb(49,130,189)'
+        color: 'rgb(0, 20, 220)'
     }
 };
 
@@ -27,7 +27,7 @@ var trace2 = {
     name: 'on target home shots',
     line: {
         width: 1,
-        color: 'rgb(49,130,189)',
+        color: 'rgb(0, 20, 220)',
         dash: 'dot'
     }
 };
@@ -39,7 +39,7 @@ var trace3 = {
     name: 'tot. away shots',
     line: {
         width: 2,
-        color: 'rgb(158,202,225)'
+        color: 'rgb(225, 5, 235)'
     }
 };
 
@@ -50,7 +50,7 @@ var trace4 = {
     name: 'on target away shots',
     line: {
         width: 1,
-        color: 'rgb(158,202,225)',
+        color: 'rgb(225, 5, 235)',
         dash: 'dot'
     }
 };
@@ -59,7 +59,6 @@ var trace4 = {
 var layout = {
     title: 'Shots precision',
     width: 380,
-    height: 410,
     xaxis: {
         title: 'Seasons',
         showgrid: true,
@@ -90,12 +89,12 @@ Plotly.newPlot('chart-shots-teamA', data, layout, {displayModeBar: false}); //{m
 
 
 function updateDatasChartShotsTeamA(team){
+    var dataForChartShot = getPrecisionShotsFor(team)
     if(team != null){
-        console.log(team)
         var dataForChartShot = getPrecisionShotsFor(team)
         //update of layout
         var update = {
-            title: 'Shots precision of '+ team_A,
+            title: team_A + ' shots precision',
         }
         Plotly.relayout('chart-shots-teamA', update)
 
@@ -123,7 +122,7 @@ function updateDatasChartShotsTeamA(team){
             y: [dataForChartShot[3]]
         }
         Plotly.restyle('chart-shots-teamA', update, [3]);
-    }else if (team_A != null){
+    }else{
         //update of layout
         var update = {
             title: 'Shots precision'
@@ -133,25 +132,25 @@ function updateDatasChartShotsTeamA(team){
         //update of traces
         var update = {
             name: 'tot. home shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[0]]
         }
         Plotly.restyle('chart-shots-teamA', update, [0]);
 
         var update = {
             name: 'on target home shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[2]]
         }
         Plotly.restyle('chart-shots-teamA', update, [1]);
 
         var update = {
             name: 'tot. away shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[1]]
         }
         Plotly.restyle('chart-shots-teamA', update, [2]);
 
         var update = {
             name: 'on target away shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[3]]
         }
         Plotly.restyle('chart-shots-teamA', update, [3]);
     }

@@ -1,47 +1,45 @@
 /* GENERAL LAYOUT */
 body {
     margin: 0px;
-    padding: 0px
-        font-family: 'Titillium Web', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
 }
-
+#div_menu {
+    width: 100%;
+    height: 80px;
+    background-color: whitesmoke;
+    border-bottom: 1px solid black;
+}
 /* no selectable text */
 .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
-    supported by Chrome, Opera and Firefox */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
 }
 
 html {
     overflow-y: hidden; 
-    font-family: 'Titillium Web', sans-serif;
 }
 
 
 
 
-
-
-
-
-
-
-/* COMPONENTS */
-/*logo */
+/* LOGO */
 #logo {
-    width: 214px;
-    height: 24px;
+    width: 2%;
     float: left;
-    margin-top: 15px;
-    margin-left: 2%;
-    margin-right: 20.5%;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
-/* team selectors*/
+
+
+
+
+/* TEAM SELECTORS*/
 .chosen-container {
     float: left;
     margin-left: 60px;
@@ -62,31 +60,22 @@ html {
     font-size: 19px;
 }
 
-#sel_teamA_chosen > a > span {
-    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(38,163,215,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
-#sel_teamB_chosen > a > span {
-    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(38,163,215,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
-/* season selector */
+
+
+/* SEASONS SELECTOR */
 /* range slider: http://ionden.com/a/plugins/ion.rangeSlider/start.html */
 .irs--flat.irs-with-grid { 
-    width: 420px;
-    height: 50px;
+    width: 300px;
     float: left;
-    margin-left: 14.5%;
-    margin-top: 3px;
+    margin-left: 60px;
+    margin-top: 9px;
+
 }
 
 span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-grid-text.js-grid-text-2, span.irs-grid-text.js-grid-text-3, span.irs-grid-text.js-grid-text-4  {
     color: black;
-    display: none;
 }
 
 #div_menu > span > span.irs-bar {
@@ -103,7 +92,10 @@ span.irs-grid-text.js-grid-text-0, span.irs-grid-text.js-grid-text-1, span.irs-g
     color: black;
 }
 
-/*table */
+
+
+
+/*TABLE */
 .table_row {
     -webkit-transition: background-color 0.5s ease-in-out;
     -moz-transition: background-color 0.5s ease-in-out;
@@ -131,7 +123,9 @@ table.no-spacing {
     border-collapse: collapse;  /* Optional - if you don't want to have double border where cells touch */
 }
 
-/* scrollbar */
+
+
+/* SCROLLBAR */
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
@@ -154,7 +148,22 @@ table.no-spacing {
     background: #b30000; 
 }
 
-/* loader in the launch of page */
+
+
+
+/* CREDITS BOX */
+#div_credits {
+    float: left;
+    margin-left: 750px;
+    margin-top: 60px;
+    user-select: none;
+}
+
+
+
+
+
+/* LOADER */
 .loader_bg {
     position: fixed;
     z-index: 999999;
@@ -252,77 +261,31 @@ h1#legend_quotes {
     text-align: center;
 }
 
-/* all plotly graph */
-#chart-fouls-redcards > div > div {
-    top: 15px;
-    left: 10px;
-}
-
-#chart-shots-teamA > div > div {
-    top: 5px;
-}
-#chart-shots-teamB > div > div {
-    top: 5px;
-}
-
-
-
-
-
-
-
-
 
 
 /* LAYOUT DIVISION */
-#div_menu {
-    position: absolute;
-    width: 100%;
-    height: 5%;
-    background-color: white;
-    border-bottom: 1px solid black;
-}
-
-#div_team_A{
-    position: absolute;
-    float: left;
-    bottom: 12%;
-    left: 25%;
-}
-#div_team_B{
-    position: absolute;
-    float: left;
-    bottom: 12%;
-    left: 35%;
-}
-
 #div_graphs_table {
     position: absolute;
-    float: left;
+    float: right;
     width: 100%;
-    height: 95%;
-    background-color: white;
-    top: 5%;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    height: 90.5%;
 }
 
 #div_sx_container {
     position: absolute;
     float: right;
     width: 80%;
-    height: 100%;
-    background-color: white;
-    border: 1px solid black;
+    height: 102.2%;
+    background-color: whitesmoke;
+    border: 0.2px solid black;
 }
 
 #div_dx_container {
     float: right;
     width: 20%;
-    background-color: white;
-    height: 100%;
-    border-left: 0.5px solid black;
-    border-top: 1px solid black;
+    background-color: whitesmoke;
+    height: 102.2%;
+    border: 0.2px solid black;
 }
 
 #div_dx_container_top{
@@ -334,7 +297,7 @@ h1#legend_quotes {
 #div_dx_container_bottom{
     float:right;
     width: 100%;
-    height: 97%;
+    height: 95%;
     overflow-y: scroll;
 }
 
@@ -343,9 +306,8 @@ h1#legend_quotes {
     float: left;
     width: 50%;
     height: 55%;
-    border-left: 1x solid black; 
-    border-bottom: 1px solid black;
-    z-index: 2; /* used for show border */
+    border-left: 0.2px solid black; 
+    border-bottom: 0.2px solid black;
 }
 
 #div_goals_teamA {
@@ -370,25 +332,25 @@ h1#legend_quotes {
     border-bottom: 0.2px solid black; 
 }
 
-#div_shots {
-    position: absolute;
-    height: 45%;
-    top: 55%;
-    width: 50%;
-}
-
 #div_shots_teamA {
     position: absolute;
-    width: 50%;
-    height: 100%;
+    width: 25%;
+    height: 45%;
+    top: 55%;
+    border-left: 0.2px solid black; 
+    border-bottom: 0.2px solid black; 
     background-color: white;
 }
 
 #div_shots_teamB { 
     position: absolute;
-    width: 50%;
-    height: 100%;
-    left: 50%;
+    width: 25%;
+    height: 45%;
+    top: 55%;
+    left: 25.06%;
+    border-right: 0.2px solid black; 
+    border-bottom: 0.2px solid black; 
+    z-index: 2;
     background-color: white;
 }
 
@@ -396,15 +358,32 @@ h1#legend_quotes {
     position: absolute;
     width: 50%;
     height: 45%;
-    left: 50%;
+    margin-left: 50%;
     top: 55%;
     border-left: 0.2px solid black; 
+    border-bottom: 0.2px solid black; 
 }
 
 
 
 
 
+
+
+
+/* FOULS AND RED CARDS CHART */
+#chart {
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+
+
+
+#form_switch_goal {
+    text-align: center;
+    font-size: 15px;
+}
 
 
 
