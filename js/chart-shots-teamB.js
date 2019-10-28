@@ -88,15 +88,11 @@ Plotly.newPlot('chart-shots-teamB', data, layout, {displayModeBar: false}); //{m
 
 
 function updateDatasChartShotsTeamB(team){
-    console.log("chartB: " + team)
+    var dataForChartShot = getPrecisionShotsFor(team)
     if(team != null){
-        var dataForChartShot = getPrecisionShotsFor(team)
-        console.log("Raw data: " + dataForChartShot)
-        console.log("")
-        console.log("data for chart B: " + team + "\n Tot Home S: " + dataForChartShot[0] + "\n On target home shots: " + dataForChartShot[2] + "\n Tot Away S: " + dataForChartShot[1] + "\n On target away shots: " + dataForChartShot[3])
         //update of layout
         var update = {
-            title: 'Shots precision of '+ team_B,
+            title: team_B + ' shots precision',
         }
         Plotly.relayout('chart-shots-teamB', update)
 
@@ -124,7 +120,7 @@ function updateDatasChartShotsTeamB(team){
             y: [dataForChartShot[3]]
         }
         Plotly.restyle('chart-shots-teamB', update, [3]);
-    }else if (team_B != null){
+    }else{
         //update of layout
         var update = {
             title: 'Shots precision'
@@ -134,25 +130,25 @@ function updateDatasChartShotsTeamB(team){
         //update of traces
         var update = {
             name: 'tot. home shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[0]]
         }
         Plotly.restyle('chart-shots-teamB', update, [0]);
 
         var update = {
             name: 'on target home shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[2]]
         }
         Plotly.restyle('chart-shots-teamB', update, [1]);
 
         var update = {
             name: 'tot. away shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[1]]
         }
         Plotly.restyle('chart-shots-teamB', update, [2]);
 
         var update = {
             name: 'on target away shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[3]]
         }
         Plotly.restyle('chart-shots-teamB', update, [3]);
     }

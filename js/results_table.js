@@ -165,7 +165,6 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
 }
 
 function updateTable(){
-    console.log(team_A_table + " - " + team_B_table)
     if(team_A_table === "" && team_B_table === "")
         createTableFor(null, null, null, null)
     else if(team_A_table === "")

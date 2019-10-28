@@ -28,6 +28,7 @@
         <link rel="stylesheet" type="text/css" href="../css/chart-shots-teamA.css">
         <link rel="stylesheet" type="text/css" href="../css/chart-shots-teamB.css">
         <link rel="stylesheet" type="text/css" href="../css/chart_fouls-redcards.css">
+        <link rel="stylesheet" type="text/css" href="../css/chart_goals.css">
 
         <!-- FONT -->
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
@@ -135,12 +136,36 @@
             <div id="div_sx_container">
 
 
-                <div id="div_goals"></div>
+                <div id="div_goals">
+                    <h1 id="title_quotes">Goals</h1>
+                    <h1 id="legend_quotes">
+                        <span id="scored_A" style="color:rgb(49,130,189);">■ scored goals &nbsp; &nbsp;</span>
+                        <span id="suffered_A" style="color:rgb(158,202,225);">■ suffered goals &nbsp; &nbsp;</span>
+                        <span id="scored_B" style="color:rgb(230,85,13);">■ scored goals &nbsp; &nbsp;</span>
+                        <span id="suffered_B" style="color:rgb(253,173,107);">■ suffered goals &nbsp; &nbsp;</span>
+                    </h1>
 
-              
+                    <h1 id="form_switch_goal">
+                        <form>
+                            <label><input id="percent" type="radio" name="mode" value="percent"> Ratio</label>
+                            <label><input id="grouped" type="radio" name="mode" value="grouped" checked> Grouped</label>
+                        </form>
+                    </h1>
+
+                    <div id="div_goals_teamA">
+                        <!-- <svg id="chart-goals-teamA"></svg>-->
+
+                    </div>
+
+                    <div id="div_goals_teamB">
+                        <!-- <svg id="chart-goals-teamA"></svg>-->
+                    </div>
+                </div>
+
+
                 <!-- Graph of fouls committed by home team and relative red cards -->
                 <div id="div_quotes">
-                    <h1 id="title_quotes">Balance of matches</h1>
+                    <h1 id="title_quotes">Matches' balance</h1>
                     <h1 id="legend_quotes">
                         <span style="color:#10bf00;">■ balanced match &nbsp; &nbsp;</span>
                         <span style="color:#ebb800;">■ softly unbalanced match &nbsp; &nbsp;</span>
@@ -202,12 +227,16 @@
         <script type="text/javascript" src="../js/select_filler.js"></script>
         <script type="text/javascript" src="../js/wait_window.js"></script>
         <script type="text/javascript" src="../js/dataset_selector.js"></script>
+        <script type="text/javascript" src="../js/transitions_chart_goals.js"></script>
 
         <!-- JS external related to graphs-->
         <script type="text/javascript" src="../js/chart-shots-teamA.js"></script>
         <script type="text/javascript" src="../js/chart-shots-teamB.js"></script>
         <script type="text/javascript" src="../js/chart_fouls-redcards.js"></script>
         <script type="text/javascript" src="../js/chart_MDS.js"></script>
+        <script type="text/javascript" src="../js/chart_goals_teamA.js"></script>
+        <script type="text/javascript" src="../js/chart_goals_teamB.js"></script>
+
     </body>
 
 
