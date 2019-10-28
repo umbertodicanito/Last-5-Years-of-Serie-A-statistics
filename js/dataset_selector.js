@@ -1,6 +1,7 @@
 function getFoulsAndRedCardsForTeam(team){
     var fouls = []
     var redCards = []
+    var idSeason = 1
     var seasonYear = 18
     var foulsForThisYear = 0
     var redCardsForThisYear = 0
@@ -23,6 +24,7 @@ function getFoulsAndRedCardsForTeam(team){
             //resetting counters
             foulsForThisYear = 0
             redCardsForThisYear = 0
+            idSeason++
             seasonYear--
         }
         //adding info when team appears in row
@@ -65,6 +67,7 @@ function getPrecisionShotsFor(team){
     var awayShots = []
     var awayShotsOnTarget = []
 
+    var idSeason = 1
     var seasonYear = 18
     var homeShotsForThisYear = 0
     var homeShotsOnTargetForThisYear = 0
@@ -97,6 +100,7 @@ function getPrecisionShotsFor(team){
             homeShotsOnTargetForThisYear = 0
             awayShotsForThisYear = 0
             awayShotsOnTargetForThisYear = 0
+            idSeason++
             seasonYear--
         }
 
@@ -124,13 +128,13 @@ function getPrecisionShotsFor(team){
         awayShots.push(null)
         awayShotsOnTarget.push(null)
     }
-
+    
     /*reverting order since dataset has another way to order matches*/
     homeShots = homeShots.reverse()
     homeShotsOnTarget = homeShotsOnTarget.reverse()
     awayShots = awayShots.reverse()
     awayShotsOnTarget = awayShotsOnTarget.reverse()
-
+    
     /*filter based on slider of years*/
     for(var i = 0; i < 5; i++){
         if(i < season_from || i > season_to){
@@ -140,70 +144,7 @@ function getPrecisionShotsFor(team){
             awayShotsOnTarget[i] = null
         }
     }
-
+    
     return [homeShots,awayShots,homeShotsOnTarget,awayShotsOnTarget]
 
-}
-function getGoalsDoneBy(team){
-    var homeGoals = []
-    var sufferedGoals = []
-
-    var homeGoalsForThisSeason = 0
-    var sufferedGoalsForThisSeason = 0
-    var seasonYear = 18
-    for(var r = 0; r < data.length; r++){
-        /*data[r] is the row of the dataset from which we should take both home and away goals done*/
-        var lastYear = data[r].Date
-        lastYear = lastYear.substr(lastYear.length-2)
-        var lastYearInteger = parseInt(lastYear,10)
-
-        //if the year of the row is lower than the reference, than we switched season
-        if(lastYearInteger < seasonYear){
-            if(homeGoalsForThisSeason != 0){
-                homeGoals.push(homeGoalsForThisSeason)
-                sufferedGoals.push(sufferedGoalsForThisSeason)
-            }
-            else{
-                homeGoals.push(null)
-                sufferedGoals.push(null)
-            }
-            /*resetting counters*/
-            seasonYear--
-            homeGoalsForThisSeason = 0
-            sufferedGoalsForThisSeason = 0
-        }
-
-        /*updating counters when team appears in the row*/
-        if(data[r].HomeTeam === team){
-            homeGoalsForThisSeason = homeGoalsForThisSeason + data[r].FTHG
-            sufferedGoalsForThisSeason = sufferedGoalsForThisSeason + data[r].FTAG
-        }else if (data[r].AwayTeam === team){
-            homeGoalsForThisSeason = homeGoalsForThisSeason + data[r].FTAG
-            sufferedGoalsForThisSeason = sufferedGoalsForThisSeason + data[r].FTHG
-        }
-    }
-
-    /*appending last info not catched from loop*/
-    if(homeGoalsForThisSeason != 0){
-        homeGoals.push(homeGoalsForThisSeason)
-        sufferedGoals.push(sufferedGoalsForThisSeason)
-    }
-    else{
-        homeGoals.push(null)
-        sufferedGoals.push(null)
-    }
-
-    /*reverting order*/
-    homeGoals = homeGoals.reverse()
-    sufferedGoals = sufferedGoals.reverse()
-
-    /*filter based on season slider*/
-    for(var i = 0; i < 5; i++){
-        if(i < season_from || i > season_to){
-            homeGoals[i] = null
-            sufferedGoals[i] = null
-        }
-    }
-
-    return [homeGoals, sufferedGoals]
 }
