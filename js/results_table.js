@@ -84,8 +84,25 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
             result.shift()
         }
 
+        /*if one team is selected there are junk data at the start of the list*/
+        var toRemove = []
+        if((team_A_table !== "" && team_B_table === "")||(team_B_table !== "" && team_A_table === "")){
+            var dateToRemove = result[0].Date.split("/")[2]
+            for(var i = 0; i < result.length; i++){
+                if(result[i].Date.split("/")[2] === dateToRemove)
+                    toRemove.push(i)
+                else
+                    break
+            }
+            
+            for(var j = 0; j < toRemove.length; j++){
+                result.shift()
+            }
+        }
+
         //removing old data
         $('#matches_table').find("tr:gt(0)").remove();
+
         //adding data to table
         var elementsToAdd = ""
         for(var j = 0; j<result.length; j++){
