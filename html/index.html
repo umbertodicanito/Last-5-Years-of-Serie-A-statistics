@@ -136,23 +136,17 @@
 
 
                 <div id="div_goals">
-
+                    <form>
+                        <label><input id="percent" type="radio" name="mode" value="percent"> Percent</label>
+                        <label><input id="grouped" type="radio" name="mode" value="grouped" checked> Grouped</label>
+                    </form>
                     <div id="div_goals_teamA">
                         <!-- <svg id="chart-goals-teamA"></svg>-->
-                        <form>
-                            <label><input id="percent_A" type="radio" name="mode" value="percent_A"> Percent</label>
-                            <label><input id="grouped_A" type="radio" name="mode" value="grouped_A"> Grouped</label>
-                            <label><input id="stacked_A" type="radio" name="mode" value="stacked_A" checked> Stacked</label>
-                        </form>
+
                     </div>
 
                     <div id="div_goals_teamB">
                         <!-- <svg id="chart-goals-teamA"></svg>-->
-                        <form>
-                            <label><input id="percent_B" type="radio" name="mode" value="percent_B"> Percent</label>
-                            <label><input id="grouped_B" type="radio" name="mode" value="grouped_B"> Grouped</label>
-                            <label><input id="stacked_B" type="radio" name="mode" value="stacked_B" checked> Stacked</label>
-                        </form>
                     </div>
                 </div>
 
@@ -221,6 +215,7 @@
         <script type="text/javascript" src="../js/select_filler.js"></script>
         <script type="text/javascript" src="../js/wait_window.js"></script>
         <script type="text/javascript" src="../js/dataset_selector.js"></script>
+        <script type="text/javascript" src="../js/transitions_chart_goals.js"></script>
 
         <!-- JS external related to graphs-->
         <script type="text/javascript" src="../js/chart-shots-teamA.js"></script>

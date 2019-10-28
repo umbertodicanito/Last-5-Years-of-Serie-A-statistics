@@ -92,7 +92,7 @@ function updateDatasChartShotsTeamB(team){
         var dataForChartShot = getPrecisionShotsFor(team)
         //update of layout
         var update = {
-            title: 'Shots precision of '+ team_B,
+            title: team_B + ' shots precision',
         }
         Plotly.relayout('chart-shots-teamB', update)
 

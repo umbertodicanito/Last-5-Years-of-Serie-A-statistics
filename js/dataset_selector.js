@@ -146,10 +146,10 @@ function getPrecisionShotsFor(team){
 }
 function getGoalsDoneBy(team){
     var homeGoals = []
-    var awayGoals = []
+    var sufferedGoals = []
 
     var homeGoalsForThisSeason = 0
-    var awayGoalsForThisSeason = 0
+    var sufferedGoalsForThisSeason = 0
     var seasonYear = 18
     for(var r = 0; r < data.length; r++){
         /*data[r] is the row of the dataset from which we should take both home and away goals done*/
@@ -161,47 +161,49 @@ function getGoalsDoneBy(team){
         if(lastYearInteger < seasonYear){
             if(homeGoalsForThisSeason != 0){
                 homeGoals.push(homeGoalsForThisSeason)
-                awayGoals.push(awayGoalsForThisSeason)
+                sufferedGoals.push(sufferedGoalsForThisSeason)
             }
             else{
                 homeGoals.push(null)
-                awayGoals.push(null)
+                sufferedGoals.push(null)
             }
             /*resetting counters*/
             seasonYear--
             homeGoalsForThisSeason = 0
-            awayGoalsForThisSeason = 0
+            sufferedGoalsForThisSeason = 0
         }
 
         /*updating counters when team appears in the row*/
         if(data[r].HomeTeam === team){
             homeGoalsForThisSeason = homeGoalsForThisSeason + data[r].FTHG
+            sufferedGoalsForThisSeason = sufferedGoalsForThisSeason + data[r].FTAG
         }else if (data[r].AwayTeam === team){
-            awayGoalsForThisSeason = awayGoalsForThisSeason + data[r].FTAG
+            homeGoalsForThisSeason = homeGoalsForThisSeason + data[r].FTAG
+            sufferedGoalsForThisSeason = sufferedGoalsForThisSeason + data[r].FTHG
         }
     }
 
     /*appending last info not catched from loop*/
     if(homeGoalsForThisSeason != 0){
         homeGoals.push(homeGoalsForThisSeason)
-        awayGoals.push(awayGoalsForThisSeason)
+        sufferedGoals.push(sufferedGoalsForThisSeason)
     }
     else{
         homeGoals.push(null)
-        awayGoals.push(null)
+        sufferedGoals.push(null)
     }
 
     /*reverting order*/
     homeGoals = homeGoals.reverse()
-    awayGoals = awayGoals.reverse()
+    sufferedGoals = sufferedGoals.reverse()
 
     /*filter based on season slider*/
     for(var i = 0; i < 5; i++){
         if(i < season_from || i > season_to){
             homeGoals[i] = null
-            awayGoals[i] = null
+            sufferedGoals[i] = null
         }
     }
 
-    return [homeGoals, awayGoals]
+    return [homeGoals, sufferedGoals]
 }
