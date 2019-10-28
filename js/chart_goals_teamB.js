@@ -5,9 +5,9 @@ var n = 2, // number of layers
     m = 5, // number of samples per layer
     stack = d3.stack()
 
-var margin = {top: 40, right: 10, bottom: 20, left: 35},
-    width = 203 - margin.left - margin.right,
-    height = 476 - margin.top - margin.bottom;
+var margin = {top: 2, right: 10, bottom: 20, left: 130},
+    width = 340 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 var formatPercent_B = d3.format(".0%");
 var formatNumber_B = d3.format("");

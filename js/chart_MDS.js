@@ -1,4 +1,4 @@
-var margin = {top:5, right:10, bottom:40, left:40},width = 761 - margin.left - margin.right, height = 465 - margin.top - margin.bottom;
+var margin = {top:10, right:10, bottom:40, left:40},width = 761 - margin.left - margin.right, height = 480 - margin.top - margin.bottom;
 var allTeamsInDataset = ["Atalanta","Benevento","Bologna","Cagliari","Carpi","Cesena","Chievo","Crotone","Empoli","Fiorentina","Frosinone","Genoa",
                         "Inter","Juventus","Lazio","Milan","Napoli","Palermo","Parma","Pescara","Roma","Sampdoria","Sassuolo","Spal","Torino",
                         "Udinese","Verona"]
@@ -94,6 +94,7 @@ function drawGraph(){
     xScale.domain([d3.min(pointsData, xValue)-0.05, d3.max(pointsData, xValue)+0.05]);
     yScale.domain([d3.min(pointsData, yValue)-0.05, d3.max(pointsData, yValue)+0.05]);
 
+    /*
     // x-axis
     svg.append("g")
         .attr("class", "x axis")
@@ -117,6 +118,7 @@ function drawGraph(){
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .text("Y");
+        */
 }
 
 //used to show data for just one or more seasons

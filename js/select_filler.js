@@ -58,7 +58,6 @@ function removeAndUpdate(){
         var t = ""
         if(id === "sel_teamA"){
             t = $( "#sel_teamA option:selected" ).text()
-            console.log(t)
             if(t === "Choose team A...")
                 t = null
             setTeamATable(t)
@@ -74,10 +73,15 @@ function removeAndUpdate(){
             updateChartShotsB(t)
             updateChartGoalsForTeamB(t)
         }
-        updateChartFoulsRedCardsA_B($( "#sel_teamA option:selected" ).text(), $( "#sel_teamB option:selected" ).text())
-
-
+        var tA = $( "#sel_teamA option:selected" ).text()
+        var tB = $( "#sel_teamB option:selected" ).text()
+        if(tA == null)
+            tA = "Choose team A..."
+        if(tB == null)
+            tB = "Choose team B..."
+        updateChartFoulsRedCardsA_B(tA, tB)
     }
+
 }
 
 function populateGenericSelect(teamTag){
@@ -116,15 +120,12 @@ function populateGenericSelect(teamTag){
 //populate "teamNames" variable
 setTimeout(function(){
     getTeamNames()
-    if(teamNames.length != 27){
-        console.log("Dati NON ricevuti dal filler")
-        getTeamNames()
+    if(teamNames.length == 0){
+        alert("ATTENZIONE: dati non ricevuti")
+    }else{
+        //sorting data
+        teamNames.sort()
+        populateGenericSelect("A")
+        populateGenericSelect("B")
     }
-    if(teamNames.length != 27){
-        getTeamNames()
-    }
-    //sorting data
-    teamNames.sort()
-    populateGenericSelect("A")
-    populateGenericSelect("B")
 }, 2400)

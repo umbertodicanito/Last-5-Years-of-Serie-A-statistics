@@ -1,6 +1,7 @@
 function getFoulsAndRedCardsForTeam(team){
     var fouls = []
     var redCards = []
+    var idSeason = 1
     var seasonYear = 18
     var foulsForThisYear = 0
     var redCardsForThisYear = 0
@@ -23,6 +24,7 @@ function getFoulsAndRedCardsForTeam(team){
             //resetting counters
             foulsForThisYear = 0
             redCardsForThisYear = 0
+            idSeason++
             seasonYear--
         }
         //adding info when team appears in row
@@ -65,6 +67,7 @@ function getPrecisionShotsFor(team){
     var awayShots = []
     var awayShotsOnTarget = []
 
+    var idSeason = 1
     var seasonYear = 18
     var homeShotsForThisYear = 0
     var homeShotsOnTargetForThisYear = 0
@@ -97,6 +100,7 @@ function getPrecisionShotsFor(team){
             homeShotsOnTargetForThisYear = 0
             awayShotsForThisYear = 0
             awayShotsOnTargetForThisYear = 0
+            idSeason++
             seasonYear--
         }
 
@@ -206,4 +210,5 @@ function getGoalsDoneBy(team){
     }
 
     return [homeGoals, sufferedGoals]
+
 }

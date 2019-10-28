@@ -84,30 +84,8 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
             result.shift()
         }
 
-        /*if one team is selected there are junk data at the start of the list*/
-        var toRemove = []
-        console.log(team_A_table + " - " + team_B_table)
-        if(team_A_table == null)
-            team_A_table = ""
-        if(team_B_table == null)
-            team_B_table = ""
-        if((team_A_table !== "" && team_B_table === "")||(team_B_table !== "" && team_A_table === "")){
-            var dateToRemove = result[0].Date.split("/")[2]
-            for(var i = 0; i < result.length; i++){
-                if(result[i].Date.split("/")[2] === dateToRemove)
-                    toRemove.push(i)
-                else
-                    break
-            }
-            
-            for(var j = 0; j < toRemove.length; j++){
-                result.shift()
-            }
-        }
-
         //removing old data
         $('#matches_table').find("tr:gt(0)").remove();
-
         //adding data to table
         var elementsToAdd = ""
         for(var j = 0; j<result.length; j++){
@@ -155,8 +133,8 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
                 indexSeason = 5
             /*index is used to highligh row when point on MDS graph is focused*/
             var rowId = "_rowTable" + indexSeason + result[j].HomeTeam + "-" + result[j].AwayTeam
-            elementsToAdd = elementsToAdd + "<tr id=" + rowId + ' class="table_row"><td>' + realDate + " </td><td>" + result[j].HomeTeam + "-" 
-                + result[j].AwayTeam + "</td><td>" + result[j].FTHG + "-" + result[j].FTAG + "</td></tr>"
+            elementsToAdd = elementsToAdd + "<tr id=" + rowId + ' class="table_row"><td style="text-align:center;">' + realDate + ' </td><td>' + result[j].HomeTeam + "-" 
+                + result[j].AwayTeam + '</td><td style="text-align:left;">' + result[j].FTHG + "-" + result[j].FTAG + "</td></tr>"
         }
         $('#matches_table tr:last').after(elementsToAdd);
 
@@ -170,6 +148,7 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
 }
 
 function updateTable(){
+    console.log(team_A_table + " - " + team_B_table)
     if(team_A_table === "" && team_B_table === "")
         createTableFor(null, null, null, null)
     else if(team_A_table === "")

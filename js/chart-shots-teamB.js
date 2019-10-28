@@ -15,7 +15,7 @@ var trace1 = {
     name: 'tot. home shots',
     line: {
         width: 2,
-        color: 'rgb(255, 135, 25)'
+        color: 'rgb(230,85,13)'
     }
 };
 
@@ -26,7 +26,7 @@ var trace2 = {
     name: 'on target home shots',
     line: {
         width: 1,
-        color: 'rgb(255, 135, 25)',
+        color: 'rgb(230,85,13)',
         dash: 'dot'
     }
 };
@@ -38,7 +38,7 @@ var trace3 = {
     name: 'tot. away shots',
     line: {
         width: 2,
-        color: 'rgb(255, 215, 15)'
+        color: 'rgb(253,174,107)'
     }
 };
 
@@ -49,7 +49,7 @@ var trace4 = {
     name: 'on target away shots',
     line: {
         width: 1,
-        color: 'rgb(255, 215, 15)',
+        color: 'rgb(253,174,107)',
         dash: 'dot'
     }
 };
@@ -57,11 +57,12 @@ var trace4 = {
 //editing the style of graph
 var layout = {
     title: 'Shots precision',
-    width: 380,
+    width: 500,
+    height: 410,
     xaxis: {
         title: 'Seasons',
         showgrid: true,
-        zeroline: false,
+        zeroline:true,
         fixedrange:true 
     },
     yaxis: {
@@ -89,7 +90,10 @@ Plotly.newPlot('chart-shots-teamB', data, layout, {displayModeBar: false}); //{m
 
 function updateDatasChartShotsTeamB(team){
     var dataForChartShot = getPrecisionShotsFor(team)
+
     if(team != null){
+        
+        
         //update of layout
         var update = {
             title: team_B + ' shots precision',

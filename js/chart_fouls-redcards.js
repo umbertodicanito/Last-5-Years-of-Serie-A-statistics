@@ -14,10 +14,10 @@ var trace1 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
     y: [null,null,null,null,null],
     type: 'scatter',
-    name: team_A + ' fouls',
+    name: 'fouls committed',
     line: {
         width: 2,
-        color: 'rgb(0, 20, 220)'
+        color: 'rgb(49,130,189)'
     }
 };
 
@@ -25,10 +25,10 @@ var trace2 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
     y: [null,null,null,null,null],
     type: 'scatter',
-    name: team_A + ' red cards',
+    name: 'red cards',
     line: {
         width: 1,
-        color: 'rgb(0, 20, 220)',
+        color: 'rgb(49,130,189)',
         dash: 'dot'
     }
 };
@@ -37,10 +37,10 @@ var trace3 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
     y: [null,null,null,null,null],
     type: 'scatter',
-    name: team_B + ' fouls',
+    name: 'fouls committed',
     line: {
         width: 2,
-        color: 'rgb(255, 135, 25)'
+        color: 'rgb(230,85,13)'
     }
 };
 
@@ -48,10 +48,10 @@ var trace4 = {
     x: ["2014/15", "2015/16", "2016/17", "2017/18", "2018/19"],
     y: [null,null,null,null,null],
     type: 'scatter',
-    name: team_B + ' red cards',
+    name: 'red cards',
     line: {
         width: 1,
-        color: 'rgb(255, 135, 25)',
+        color: 'rgb(230,85,13)',
         dash: 'dot'
     }
 };
@@ -59,6 +59,8 @@ var trace4 = {
 //editing the style of graph
 var layout = {
     title: 'Fouls and red cards',
+    width: 500,
+    height: 410,
     xaxis: {
         title: 'Seasons',
         showgrid: true,
@@ -71,7 +73,8 @@ var layout = {
         showgrid: true,
         zeroline:true,
         rangemode: 'nonnegative',
-        fixedrange:true
+        fixedrange:true,
+        automargin: true
     },
     showlegend: true,
     legend: {
@@ -93,12 +96,19 @@ function updateChartFoulsRedCardsA_B(teamA, teamB){
     var computedTitle = "fouls and red cards"
     if(teamA !== "Choose team A..." && teamB !== "Choose team B...")
         computedTitle = teamA + " and " + teamB + " " + computedTitle
-    else if(teamA === "Choose team A..." && teamB !== "Choose team B...")
+    else if(teamA === "Choose team A..." && teamB !== "Choose team B..."){
         computedTitle = teamB + " " + computedTitle
-    else if(teamB === "Choose team B..." && teamA !== "Choose team A...")
+        team_A = ""
+    }
+    else if(teamB === "Choose team B..." && teamA !== "Choose team A..."){
         computedTitle = teamA + " " + computedTitle
-    else
+        team_B = ""
+    }
+    else{
         computedTitle = "Fouls and red cards"
+        team_A = ""
+        team_B = ""
+    }
 
     //update of layout
     var update = {
@@ -110,7 +120,7 @@ function updateChartFoulsRedCardsA_B(teamA, teamB){
     var dataCharFoulsAndRedCardTeamB = getFoulsAndRedCardsForTeam(team_B)
     //update of traces
     var update = {
-        name: team_A + ' fouls',
+        name: team_A + ' fouls committed',
         y:[dataCharFoulsAndRedCardTeamA[0]]
     }
     Plotly.restyle('chart-fouls-redcards', update, [0]);
@@ -123,7 +133,7 @@ function updateChartFoulsRedCardsA_B(teamA, teamB){
     Plotly.restyle('chart-fouls-redcards', update, [1]);
 
     var update = {
-        name: team_B + ' fouls',
+        name: team_B + ' fouls committed',
         y: [dataCharFoulsAndRedCardTeamB[0]]
     }
     Plotly.restyle('chart-fouls-redcards', update, [2]);
