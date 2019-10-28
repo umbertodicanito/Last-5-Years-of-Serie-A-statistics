@@ -1,6 +1,6 @@
 //infos on teams
-var team_A = "(choose team A..)";
-var team_B = "(choose team B..)";
+var team_A = "Choose team A...";
+var team_B = "Choose team B...";
 
 //taking element from list of squad A
 function updateChartFoulsRedCardsA_B(teamA, teamB){
@@ -17,7 +17,7 @@ var trace1 = {
     name: team_A + ' fouls',
     line: {
         width: 2,
-        color: 'rgb(49,130,189)'
+        color: 'rgb(0, 20, 220)'
     }
 };
 
@@ -28,7 +28,7 @@ var trace2 = {
     name: team_A + ' red cards',
     line: {
         width: 1,
-        color: 'rgb(49,130,189)',
+        color: 'rgb(0, 20, 220)',
         dash: 'dot'
     }
 };
@@ -40,7 +40,7 @@ var trace3 = {
     name: team_B + ' fouls',
     line: {
         width: 2,
-        color: 'rgb(230,85,13)'
+        color: 'rgb(255, 135, 25)'
     }
 };
 
@@ -51,16 +51,14 @@ var trace4 = {
     name: team_B + ' red cards',
     line: {
         width: 1,
-        color: 'rgb(230,85,13)',
+        color: 'rgb(255, 135, 25)',
         dash: 'dot'
     }
 };
 
 //editing the style of graph
 var layout = {
-    title: 'Fouls and red cards of ' +team_A + ' and ' + team_B,
-    width: 745,
-    height: 400,
+    title: 'Fouls and red cards',
     xaxis: {
         title: 'Seasons',
         showgrid: true,
@@ -73,8 +71,7 @@ var layout = {
         showgrid: true,
         zeroline:true,
         rangemode: 'nonnegative',
-        fixedrange:true,
-        automargin: true
+        fixedrange:true
     },
     showlegend: true,
     legend: {
@@ -93,13 +90,15 @@ Plotly.newPlot('chart-fouls-redcards', dataRedCardsPlot, layout, {displayModeBar
 
 function updateChartFoulsRedCardsA_B(teamA, teamB){
 
-    var computedTitle = "Fouls and red cards"
+    var computedTitle = "fouls and red cards"
     if(teamA !== "Choose team A..." && teamB !== "Choose team B...")
-        computedTitle = computedTitle + " of " + teamA + " and " + teamB
+        computedTitle = teamA + " and " + teamB + " " + computedTitle
     else if(teamA === "Choose team A..." && teamB !== "Choose team B...")
-        computedTitle = computedTitle + " of " + teamB
+        computedTitle = teamB + " " + computedTitle
     else if(teamB === "Choose team B..." && teamA !== "Choose team A...")
-        computedTitle = computedTitle + " of " + teamA
+        computedTitle = teamA + " " + computedTitle
+    else
+        computedTitle = "Fouls and red cards"
 
     //update of layout
     var update = {

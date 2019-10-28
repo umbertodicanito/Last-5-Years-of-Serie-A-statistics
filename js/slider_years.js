@@ -29,6 +29,8 @@ var triggerChange = function(data){
     updateChartFoulsRedCardsA_B(teamA,teamB)
     updateChartShotsA(teamA)
     updateChartShotsB(teamB)
+    updateChartGoalsForTeamA(teamA)
+    updateChartGoalsForTeamB(teamB)
 }
 
 $(".js-range-slider").ionRangeSlider({
