@@ -10,3 +10,7 @@ This project was made for the exam of course "Visual Analytics" for the Sapienza
 ## Screenshots
 
 ## Technologies used
+- D3.js: https://github.com/d3/d3/blob/master/API.md
+- Plotly: https://plot.ly/javascript/
+- Ion.RangeSlider: http://ionden.com/a/plugins/ion.rangeSlider/api.html
+- ColorBrewer: http://colorbrewer2.org/
