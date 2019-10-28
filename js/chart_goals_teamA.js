@@ -1,4 +1,4 @@
-var currentViewChartGoalsTeamA = "grouped"
+var currentViewChartGoalsTeamA = "grouped" 
 
 var dataGoalsTeamA = []
 var n = 2, // number of layers
@@ -67,11 +67,19 @@ function transitionPercentA() {
 }
 
 function updateChartGoalsForTeamA(team){
+    /*tooltip showing precise info*/
+    var tooltip = d3.select("#div_goals_teamA").append("div").attr("class", "tooltip").style("opacity", 0);
+
     /*retrieving data from data set*/
     if(team == null || team === "Choose team A..."){
         dataGoalsTeamA = [[0,0,0,0,0],[0,0,0,0,0]]
+        $("#scored_A").text("■ scored goals")
+        $("#suffered_A").text("■ suffered goals")
+
     }else{
         dataGoalsTeamA = getGoalsDoneBy(team)
+        $("#scored_A").text("■ " + team + " scored goals")
+        $("#suffered_A").text("■ " + team + " suffered goals")
     }
 
     /*removing old data*/
@@ -98,7 +106,7 @@ function updateChartGoalsForTeamA(team){
 
     var color_goals_A = d3.scaleLinear()
     .domain([0, n - 1])
-    .range(["rgb(0, 20, 220)", "rgb(225, 5, 235)"]);
+    .range(["rgb(49,130,189)", "rgb(158,202,225)"]);
 
     var xxAxis_A = d3.axisBottom()
     .scale(xx_A)
@@ -127,10 +135,24 @@ function updateChartGoalsForTeamA(team){
     rect_goals_A = layer_goals_two_A.selectAll("rect")
         .data(function(d) { return d; })
         .enter().append("rect")
-        .attr("x", function(d, i) { return xx_A(i); })
+        .attr("x", function(d, i) {return xx_A(i); })
         .attr("y", height)
         .attr("width", xx_A.bandwidth())
-        .attr("height", 0);
+        .attr("height", 0)
+        .attr("data-goals", function(d, i) {return "scored: <b>" + dataGoalsTeamA[i].toString().split(",")[0] + "</b><br>suffered: <b>" + dataGoalsTeamA[i].toString().split(",")[1] + "</b></br>" })
+        .on("mousemove", function(d){
+        tooltip.transition()
+            .duration(50)
+            .style("opacity", 1);
+        tooltip
+            .style("left", d3.mouse(this)[0]+50 + "px")
+            .style("top", d3.mouse(this)[1]-30 + "px")
+            .html(this.getAttribute("data-goals"));
+        })
+        .on("mouseout", function(d){ 
+        tooltip.transition()
+            .duration(50)
+            .style("opacity", 0);});
 
     rect_goals_A.transition()
         .delay(function(d, i) {return i * 10; })
@@ -151,7 +173,7 @@ function updateChartGoalsForTeamA(team){
     /*selecting input radio buttons to trigger at event*/
     d3.select("#percent").on("change", updateGoalsView);
     d3.select("#grouped").on("change", updateGoalsView);
-    
+
     /*adjusting chart view to previous one*/
     updateGoalsViewWithSpecific(lastGoalsViewSelected)
 }

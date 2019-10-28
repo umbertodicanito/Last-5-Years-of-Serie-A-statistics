@@ -89,6 +89,7 @@ Plotly.newPlot('chart-shots-teamA', data, layout, {displayModeBar: false}); //{m
 
 
 function updateDatasChartShotsTeamA(team){
+    var dataForChartShot = getPrecisionShotsFor(team)
     if(team != null){
         var dataForChartShot = getPrecisionShotsFor(team)
         //update of layout
@@ -121,7 +122,7 @@ function updateDatasChartShotsTeamA(team){
             y: [dataForChartShot[3]]
         }
         Plotly.restyle('chart-shots-teamA', update, [3]);
-    }else if (team_A != null){
+    }else{
         //update of layout
         var update = {
             title: 'Shots precision'
@@ -131,25 +132,25 @@ function updateDatasChartShotsTeamA(team){
         //update of traces
         var update = {
             name: 'tot. home shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[0]]
         }
         Plotly.restyle('chart-shots-teamA', update, [0]);
 
         var update = {
             name: 'on target home shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[2]]
         }
         Plotly.restyle('chart-shots-teamA', update, [1]);
 
         var update = {
             name: 'tot. away shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[1]]
         }
         Plotly.restyle('chart-shots-teamA', update, [2]);
 
         var update = {
             name: 'on target away shots',
-            y: [null,null,null,null,null]
+            y: [dataForChartShot[3]]
         }
         Plotly.restyle('chart-shots-teamA', update, [3]);
     }

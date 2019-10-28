@@ -66,12 +66,17 @@ function transitionPercentB() {
 }
 
 function updateChartGoalsForTeamB(team){
-
+    /*tooltip showing precise info*/
+    var tooltip = d3.select("#div_goals_teamB").append("div").attr("class", "tooltip").style("opacity", 0);
     /*retrieving data from data set*/
     if(team == null || team === "Choose team B..."){
         dataGoalsTeamB = [[0,0,0,0,0],[0,0,0,0,0]]
+        $("#scored_B").text("■ scored goals")
+        $("#suffered_B").text("■ suffered goals")
     }else{
         dataGoalsTeamB = getGoalsDoneBy(team)
+        $("#scored_B").text("■ " + team + " scored goals")
+        $("#suffered_B").text("■ " + team + " suffered goals")
     }
 
     /*removing old data*/
@@ -98,7 +103,7 @@ function updateChartGoalsForTeamB(team){
 
     var color_goals_B = d3.scaleLinear()
     .domain([0, n - 1])
-    .range(["rgb(255, 135, 25)", "rgb(255, 215, 15)"]);
+    .range(["rgb(230,85,13)", "rgb(253,174,107)"]);
 
     /*["14/15","15/16","16/17","17/18","18/19"] QUESTO dovrebbe essere mostrato sull'asse X ma non è possibile con questo tipo di scala (band) come riporta qui https://github.com/d3/d3-axis*/
     var xxAxis_B = d3.axisBottom().scale(xx_B);
@@ -125,7 +130,21 @@ function updateChartGoalsForTeamB(team){
         .attr("x", function(d, i) { return xx_B(i); })
         .attr("y", height)
         .attr("width", xx_B.bandwidth())
-        .attr("height", 0);
+        .attr("height", 0)
+        .attr("data-goals", function(d, i) {return "scored: <b>" + dataGoalsTeamB[i].toString().split(",")[0] + "</b><br>suffered: <b>" + dataGoalsTeamB[i].toString().split(",")[1] + "</b></br>" })
+        .on("mousemove", function(d){
+        tooltip.transition()
+            .duration(50)
+            .style("opacity", 1);
+        tooltip
+            .style("left", d3.mouse(this)[0]+50 + "px")
+            .style("top", d3.mouse(this)[1]-30 + "px")
+            .html(this.getAttribute("data-goals"));
+        })
+        .on("mouseout", function(d){ 
+        tooltip.transition()
+            .duration(50)
+            .style("opacity", 0);});
 
     rect_goals_B.transition()
         .delay(function(d, i) {return i * 10; })
@@ -146,7 +165,7 @@ function updateChartGoalsForTeamB(team){
     /*selecting input radio buttons to trigger at event*/
     d3.select("#percent").on("change", updateGoalsView);
     d3.select("#grouped").on("change", updateGoalsView);
-    
+
     /*adjusting chart view to previous one*/
     updateGoalsViewWithSpecific(lastGoalsViewSelected)
 }

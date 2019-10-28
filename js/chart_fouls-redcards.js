@@ -1,6 +1,6 @@
 //infos on teams
-var team_A = "(choose team A..)";
-var team_B = "(choose team B..)";
+var team_A = "Choose team A...";
+var team_B = "Choose team B...";
 
 //taking element from list of squad A
 function updateChartFoulsRedCardsA_B(teamA, teamB){
@@ -58,7 +58,7 @@ var trace4 = {
 
 //editing the style of graph
 var layout = {
-    title: 'Fouls and red cards of ' +team_A + ' and ' + team_B,
+    title: 'Fouls and red cards',
     xaxis: {
         title: 'Seasons',
         showgrid: true,
@@ -90,13 +90,15 @@ Plotly.newPlot('chart-fouls-redcards', dataRedCardsPlot, layout, {displayModeBar
 
 function updateChartFoulsRedCardsA_B(teamA, teamB){
 
-    var computedTitle = "Fouls and red cards"
+    var computedTitle = "fouls and red cards"
     if(teamA !== "Choose team A..." && teamB !== "Choose team B...")
-        computedTitle = computedTitle + " of " + teamA + " and " + teamB
+        computedTitle = teamA + " and " + teamB + " " + computedTitle
     else if(teamA === "Choose team A..." && teamB !== "Choose team B...")
-        computedTitle = computedTitle + " of " + teamB
+        computedTitle = teamB + " " + computedTitle
     else if(teamB === "Choose team B..." && teamA !== "Choose team A...")
-        computedTitle = computedTitle + " of " + teamA
+        computedTitle = teamA + " " + computedTitle
+    else
+        computedTitle = "Fouls and red cards"
 
     //update of layout
     var update = {

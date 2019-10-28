@@ -157,11 +157,6 @@ function showMDSDataFromTo(fromSeason,toSeason){
             .style("left", (d3.select(this).attr("cx") + 50) + "px")
             .style("top", (d3.select(this).attr("cy") +10) + "px");
 
-            /* Al fine di mostrare in maniera più netta a quale partita in tabella il punto faccia
-            * riferimento, potremmo fare in modo che, quando il puntatore del mouse passa su un punto
-            * rappresentante una partita in tabella, la riga di quella partita viene evidenziata (cam-
-            * biando colore).
-            */
         var thisId = this.getAttribute("id")
         if(highlightDots.includes(thisId))
             highlightRowTable(this.getAttribute("id"), this.style["fill"], true)
