@@ -5,7 +5,8 @@ Umberto di Canito, Daniele Buonadonna
 
 ## Overview
 This project was made for the exam of course "Visual Analytics" for the Sapienza's master degree "Engineering in Computer Science". The goal is to made a webapp in which are showned some statistics about last 5 years of italian Serie A league. In order to do this, we used a dataset found on 'datahub.io', available here: 
->Dataset: https://datahub.io/sports-data/italian-serie-a#javascript (made by #sports-data, source: http://www.football-data.co.uk/)<br\>
+>Dataset: https://datahub.io/sports-data/italian-serie-a#javascript (made by #sports-data, source: http://www.football-data.co.uk/)  
+
 >This {DATA(BASE)} is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: http://www.opendatacommons.org/licenses/pddl/1.0/
 
 ## Screenshot
