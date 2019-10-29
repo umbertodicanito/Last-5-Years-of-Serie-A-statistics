@@ -25,6 +25,9 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
         $('#matches_table').find("tr:gt(0)").remove();
     }else{
         var yearRange = [2]
+        var toSeason = 5 - season_from
+        var fromSeason = 5 - season_to
+
         //getting the start of the range
         if(dateFrom === "2018/19"){
             /*This is due to the fact that the dataset data are not equal for all the rows.
@@ -32,6 +35,7 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
         the others seasons report them as x/y/18 or 17 etc.*/
             yearRange[0] = 18
             yearRange[1] = 19
+
         }
         else
         {
@@ -40,26 +44,36 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
         }
 
         var result = []
-        for(var i = 0; i<data.length; i++){
+        var year = 19
+        var seasonId = 1
+
+        for(var i = 0; i < data.length; i++){
             var row = data[i]
-            var currentYearSting = row.Date.split("/")[2]
+            var currentYearString = row.Date.split("/")[2]
             var currentYear = 0
-            if(currentYearSting.length == 4){
+            if(currentYearString.length == 4){
                 //then it is 2018 or 2019
-                currentYearSting = currentYearSting.split("0")[1]
+                currentYearString = currentYearString.split("0")[1]
             }
-            currentYear = parseInt(currentYearSting)
-            if(currentYear>=yearRange[0] && currentYear<=yearRange[1]){
-                //it is in the right range date
+            currentYear = parseInt(currentYearString)
+            var currentMonth = parseInt(row.Date.split("/")[1])
+
+            if(currentMonth > 5 && currentYear <(year - 1)){
+                seasonId = seasonId + 1
+                year = year - 1
+            }
+
+            if(seasonId >= fromSeason && seasonId<= toSeason){
+                /*it is in the right range*/
                 if(teamB != null && teamB !== "" && teamA != null && teamA !== ""){
                     if(row.HomeTeam === teamA || row.AwayTeam === teamA){
                         if(row.HomeTeam === teamB || row.AwayTeam === teamB){
+                            /*get objects in the row, relevant for the table construction*/
                             var obj = {"Date":row.Date,"HomeTeam":row.HomeTeam,"AwayTeam":row.AwayTeam,"FTHG":row.FTHG,"FTAG":row.FTAG}
                             result.push(obj)
                         }
                     }
-                }
-                else if (teamB == null || teamB === ""){
+                }else if (teamB == null || teamB === ""){
                     //we are looking for only one team matches
                     if(row.HomeTeam === teamA || row.AwayTeam === teamA){
                         var obj = {"Date":row.Date,"HomeTeam":row.HomeTeam,"AwayTeam":row.AwayTeam,"FTHG":row.FTHG,"FTAG":row.FTAG}
@@ -73,16 +87,15 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
                         result.push(obj)
                     }
                 }
-            }else if (currentYear < yearRange[1]){
-                //it is gone too far and it is needed to stop the loop
+            }
+            else if(seasonId > fromSeason){
+                console.log("Over the limit. (seasonId = " + seasonId + ", but to:" + toSeason + " and from: " + fromSeason + ")")
+                /*we have gone over the limit asked*/
                 break
             }
         }
-
-        //there are always an even number of matches, if this didn't happent to be, i have picked a wrong match, due to date number
-        if(result.length % 2 != 0){
-            result.shift()
-        }
+        
+        console.log("found " + result.length + " matches")
 
         //removing old data
         $('#matches_table').find("tr:gt(0)").remove();
@@ -133,8 +146,8 @@ function createTableFor(teamA, teamB, dateFrom, dateTo){
                 indexSeason = 5
             /*index is used to highligh row when point on MDS graph is focused*/
             var rowId = "_rowTable" + indexSeason + result[j].HomeTeam + "-" + result[j].AwayTeam
-            elementsToAdd = elementsToAdd + "<tr id=" + rowId + ' class="table_row"><td style="text-align:center;">' + realDate + ' </td><td>' + result[j].HomeTeam + "-" 
-                + result[j].AwayTeam + '</td><td style="text-align:left;">' + result[j].FTHG + "-" + result[j].FTAG + "</td></tr>"
+            elementsToAdd = elementsToAdd + "<tr id=" + rowId + ' class="table_row"><td>' + realDate + " </td><td>" + result[j].HomeTeam + "-" 
+                + result[j].AwayTeam + "</td><td>" + result[j].FTHG + "-" + result[j].FTAG + "</td></tr>"
         }
         $('#matches_table tr:last').after(elementsToAdd);
 

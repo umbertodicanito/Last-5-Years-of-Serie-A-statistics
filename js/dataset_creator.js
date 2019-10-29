@@ -13,6 +13,13 @@ var teamNames = []
 $.get("https://jsonstorage.net/api/items/881a4adb-14b5-47b2-907f-f5ca2f0a1366", 
       function(dataOnline, textStatus, jqXHR){
     data = dataOnline
+    console.log("data received")
+    getTeamNames()
+    console.log(teamNames.length + " teams selected (should be 27)")
+    teamNames.sort()
+    console.log("updated select elements")
+    populateGenericSelect("A")
+    populateGenericSelect("B")
 });
 
 function getTeamNames(){
