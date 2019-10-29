@@ -166,7 +166,7 @@ function updateTable(){
         createTableFor(null, null, null, null)
     else if(team_A_table === "")
         createTableFor(null, team_B_table, date_From, date_To)
-    else if (team_B === "")
+    else if (team_B_table === "")
         createTableFor(team_A_table, null, date_From, date_To)
     else
         createTableFor(team_A_table, team_B_table, date_From, date_To)
