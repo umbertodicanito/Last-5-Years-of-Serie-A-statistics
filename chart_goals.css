@@ -1,0 +1,24 @@
+.toolTipChartGoals {
+    position: absolute;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+    margin-top: 40px;
+    font: 10px sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    background: #ddd;
+    pointer-events: none;
+}
+
+#div_goals_teamA > div {
+    width: 60px;
+    height: 30px;
+    text-align: left;
+}
+
+#div_goals_teamB > div {
+    width: 60px;
+    height: 30px;
+    text-align: left;
+}
